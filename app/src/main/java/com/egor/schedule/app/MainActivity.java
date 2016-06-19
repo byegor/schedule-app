@@ -4,6 +4,7 @@ package com.egor.schedule.app;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,14 +21,9 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    String[] itemname = {
-            "Safari",
-            "Safari",
-            "Safari",
-            "Safari",
-            "Safari",
-            "Camera"
-    };
+    private SwipeRefreshLayout swipeContainer;
+    ScheduleAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +31,37 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final ListView viewById = (ListView) findViewById(R.id.list);
+        adapter = new ScheduleAdapter(MainActivity.this);
+        viewById.setAdapter(adapter);
 
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Call<List<GameBean>> games = ServiceGenerator.getGameService().currentGames();
+                games.enqueue(getCallBack());
+            }
+        });
 
         Call<List<GameBean>> games = ServiceGenerator.getGameService().currentGames();
-        games.enqueue(new Callback<List<GameBean>>() {
+        games.enqueue(getCallBack());
+
+    }
+
+    private Callback<List<GameBean>> getCallBack() {
+        return new Callback<List<GameBean>>() {
             @Override
             public void onResponse(Call<List<GameBean>> call, Response<List<GameBean>> response) {
-                viewById.setAdapter(new ScheduleAdapter(MainActivity.this, response.body()));
+                adapter.clear();
+                adapter.addAll(response.body());
+                swipeContainer.setRefreshing(false);
             }
 
             @Override
             public void onFailure(Call<List<GameBean>> call, Throwable t) {
                 Log.e("CURRENT", "couldn't get games", t);
             }
-        });
-
+        };
     }
 
 
