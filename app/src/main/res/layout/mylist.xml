@@ -10,33 +10,52 @@
             android:layout_height="25dip"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:theme="@style/AppTheme" android:text="GAME STATUS"/>
+            android:theme="@style/AppTheme"
+            android:text="@string/schedule_title"/>
 
     <RelativeLayout
             android:id="@+id/schedule_panel"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginTop="1dp"
             android:visibility="visible">
+        <TextView
+                android:id="@+id/league_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:gravity="start"
+                android:layout_marginStart="7dp"
+                android:textColor="@android:color/white"
+                android:text="@string/league_name"
+        />
+
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:id="@+id/home__team_info_panel"
-                android:layout_width="75dp"
+                android:layout_width="100dp"
                 android:layout_height="85dp"
-                android:layout_marginLeft="12dp"
-                android:layout_alignParentLeft="true"
+                android:layout_marginStart="12dp"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true">
             <ImageView
                     android:id="@+id/radiant_logo"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
                     android:scaleType="fitXY"
                     android:layout_gravity="center"
                     android:src="@drawable/vega_squadron"
             />
+            <TextView
+                    android:id="@+id/radiant_team_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/radiant_name"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:paddingTop="2dp"/>
         </LinearLayout>
         <LinearLayout
-                android:layout_height="40dp"
+                android:layout_height="80dp"
                 android:layout_width="fill_parent"
                 android:layout_centerVertical="true"
                 android:orientation="vertical"
@@ -50,22 +69,40 @@
                     android:text="3:2"
                     android:textSize="25sp"
                     android:gravity="center"
+                    android:paddingTop="5dp" android:layout_marginTop="15dp"/>
+            <TextView
+                    android:id="@+id/series_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/series_type"
+                    android:textSize="15sp"
+                    android:gravity="center"
                     android:paddingTop="5dp"/>
         </LinearLayout>
-        <LinearLayout android:orientation="horizontal"
+        <LinearLayout android:orientation="vertical"
                       android:id="@+id/away_team_info_panel"
-                      android:layout_width="75dp"
+                      android:layout_width="100dp"
                       android:layout_height="85dp"
                       android:layout_marginRight="12dp"
                       android:layout_alignParentRight="true"
                       android:layout_centerVertical="true">
             <ImageView android:id="@+id/dire_logo"
-                       android:layout_width="55dp"
-                       android:layout_height="55dp"
+                       android:layout_width="65dp"
+                       android:layout_height="65dp"
                        android:scaleType="fitXY"
                        android:layout_gravity="center"
                        android:src="@drawable/natus_vincere"
             />
+            <TextView
+                    android:id="@+id/dire_team_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/dire_name"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:paddingTop="2dp"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

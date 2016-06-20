@@ -1,6 +1,7 @@
 package com.egor.schedule.app.adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,20 +47,32 @@ public class ScheduleAdapter extends ArrayAdapter<GameBean> {
         GameBean game = games.get(position);
         String radiantLogo = "http://192.168.1.26:8085/image/" + game.getRadiant().getLogo();
         Log.i("PICASSO",radiantLogo);
-        Picasso.with(context).load(radiantLogo).resize(55, 55).centerCrop().into(radiantImage);
-        Picasso.with(context).load("http://192.168.1.26:8085/image/" + game.getDire().getLogo()).resize(55, 55).centerCrop().into(direImage);
+        Picasso.with(context).load(radiantLogo).into(radiantImage);
+        Picasso.with(context).load("http://192.168.1.26:8085/image/" + game.getDire().getLogo()).resize(65, 65).centerCrop().into(direImage);
+
+        TextView leagueName = (TextView) rowView.findViewById(R.id.league_name);
+        leagueName.setText(game.getLeague().getName());
+
+        TextView radiantName = (TextView) rowView.findViewById(R.id.radiant_team_name);
+        radiantName.setText(game.getRadiant().getName());
+        TextView direName = (TextView) rowView.findViewById(R.id.dire_team_name);
+        direName.setText(game.getDire().getName());
+
+        TextView seriesType = (TextView) rowView.findViewById(R.id.series_type);
+        seriesType.setText(game.seriesType);
 
         TextView gameStatus = (TextView) rowView.findViewById(R.id.game_status);
         if(game.gameStatus == 0){
             Date gameDate = new Date(game.getStartTime());
             gameStatus.setText(timeFormatter.format(gameDate));
         }else if(game.gameStatus == 1){
-            gameStatus.setText("LIVE");
+            gameStatus.setText(R.string.game_status_live);
+            gameStatus.setTextColor(Color.RED);
         }else{
-            gameStatus.setText("FINISHED");
+            gameStatus.setText(R.string.game_status_finished);
+            gameStatus.setTextColor(Color.WHITE);
         }
 
-        score.setTextSize(15);
         score.setText(game.getRadiantWin() + ":" + game.getDireWin());
 
         return rowView;

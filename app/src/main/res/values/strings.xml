@@ -4,4 +4,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="schedule_title">GAME STARTS</string>
+    <string name="league_name">Unknown league</string>
+
+    <string name="game_status_live">LIVE</string>
+    <string name="game_status_finished">FINISHED</string>
+
+    <string name="radiant_name">radiant team</string>
+    <string name="dire_name">dire team</string>
+
+    <string name="series_type">bo5</string>
+
 </resources>
