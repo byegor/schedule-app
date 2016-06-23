@@ -2,12 +2,9 @@ package com.egor.schedule.app;
 
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.adapter.ScheduleAdapter;
@@ -16,7 +13,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.io.IOException;
 import java.util.List;
 
 public class MainActivity extends Activity {

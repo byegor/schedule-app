@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:id="@+id/schedule_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+        <TextView
+                android:id="@+id/league_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dip"
+                android:gravity="start"
+                android:layout_marginStart="15dp"
+                android:text="@string/league_name"
+        />
+
+        <TextView
+                android:id="@+id/series_type"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/series_type"
+                android:textSize="15sp"
+                android:gravity="start"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/league_name"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"
+        />
+    </RelativeLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:weightSum="3"
+    >
+
+        <!--Radiant Block-->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content">
+            <ImageView
+                    android:id="@+id/radiant_logo"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/vega_squadron"
+                    android:layout_gravity="start"
+            />
+
+            <TextView
+                    android:id="@+id/radiant_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dire_name"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:layout_gravity="center"
+            />
+
+        </LinearLayout>
+
+        <!--Score-->
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/radiant_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textSize="40sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true" android:layout_alignParentStart="true"
+                    android:layout_marginStart="2dp" android:paddingRight="5dp"/>
+            <TextView
+                    android:id="@+id/dash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="-"
+                    android:textSize="40sp"
+                    android:gravity="start"
+                    android:layout_toEndOf="@+id/radiant_score"
+                    android:layout_alignBottom="@+id/radiant_score"
+                    android:layout_alignTop="@+id/radiant_score"
+
+            />
+            <TextView
+                    android:id="@+id/dire_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22"
+                    android:textSize="40sp"
+                    android:gravity="end"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:layout_gravity="center_vertical"
+
+                    android:layout_centerVertical="true" android:layout_toEndOf="@+id/dash"/>
+
+        </RelativeLayout>
+
+
+        <!--Dire Block-->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content">
+            <ImageView android:id="@+id/dire_logo"
+                       android:layout_width="110dp"
+                       android:layout_height="110dp"
+                       android:scaleType="fitXY"
+                       android:src="@drawable/natus_vincere"
+                       android:layout_gravity="end"
+            />
+            <TextView
+                    android:id="@+id/dire_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dire_name"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:layout_gravity="center"
+            />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--Picks and bans-->
+    <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/vega_squadron"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+</LinearLayout>
