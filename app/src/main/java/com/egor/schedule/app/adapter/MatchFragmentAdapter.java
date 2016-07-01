@@ -29,7 +29,7 @@ public class MatchFragmentAdapter extends FragmentStatePagerAdapter {
         return matchesList.size();
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(Fragment fragment) {
         matchesList.add(fragment);
     }
 

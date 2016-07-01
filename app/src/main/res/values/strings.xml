@@ -14,4 +14,8 @@
 
     <string name="series_type">bo5</string>
 
+    <string name="player_name">player name</string>
+    <string name="level_status">Lvl 14: Axe</string>
+    <string name="KDA">K/D/A: 10/1/23</string>
+
 </resources>
