@@ -37,9 +37,10 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:weightSum="3"
-    >
+                  android:baselineAligned="false">
 
         <!--Radiant Block-->
+        <!--TODO IMAGE PLACEHOLDERS-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:orientation="vertical"
                       android:layout_weight="1"
@@ -77,7 +78,7 @@
                     android:id="@+id/radiant_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15"
+                    android:text="@string/score"
                     android:textSize="40sp"
                     android:layout_gravity="center_vertical"
                     android:layout_centerVertical="true" android:layout_alignParentStart="true"
@@ -98,7 +99,7 @@
                     android:id="@+id/dire_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22"
+                    android:text="@string/score"
                     android:textSize="40sp"
                     android:gravity="end"
                     android:paddingStart="5dp"
@@ -112,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:text="13:25"
+                    android:text="@string/duration"
                     android:paddingBottom="15dp"
                     android:textSize="17sp"
             />
@@ -145,17 +146,15 @@
             />
 
         </LinearLayout>
-
-
     </LinearLayout>
 
     <TextView
-            android:id="@+id/net_worth"
+            android:id="@+id/net_worth_adv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="Net Worth Advantage: Natus Vincere"
+            android:text="@string/net_worth_adv"
             android:paddingBottom="15dp"
             android:textSize="17sp"
     />
@@ -222,23 +221,24 @@
                         android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_prick_1"
+                    android:id="@+id/dire_prick_5"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_6"
+                    android:src="@drawable/h_10"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_prick_2"
+                    android:layout_alignParentEnd="true"
             />
+
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_prick_2"
+                    android:id="@+id/dire_prick_4"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_7"
+                    android:src="@drawable/h_9"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_prick_3"
+                    android:layout_toStartOf="@id/dire_prick_5"
             />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -252,23 +252,23 @@
             />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_prick_4"
+                    android:id="@+id/dire_prick_2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_9"
+                    android:src="@drawable/h_7"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_prick_5"
+                    android:layout_toStartOf="@id/dire_prick_3"
             />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_prick_5"
+                    android:id="@+id/dire_prick_1"
+                    android:layout_toStartOf="@id/dire_prick_2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_10"
+                    android:src="@drawable/h_6"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#079f05"
-                    android:layout_alignParentEnd="true"
             />
         </RelativeLayout>
     </LinearLayout>
@@ -291,7 +291,8 @@
                     android:layout_height="30dp"
                     android:src="@drawable/h_11"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"/>
+                    app:civ_border_color="#ef2020"
+            />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/radiant_ban_2"
@@ -299,7 +300,8 @@
                     android:layout_height="30dp"
                     android:src="@drawable/h_12"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"/>
+                    app:civ_border_color="#ef2020"
+            />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/radiant_ban_3"
@@ -307,7 +309,8 @@
                     android:layout_height="30dp"
                     android:src="@drawable/h_13"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"/>
+                    app:civ_border_color="#ef2020"
+            />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/radiant_ban_4"
@@ -315,7 +318,9 @@
                     android:layout_height="30dp"
                     android:src="@drawable/h_14"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"/>
+                    app:civ_border_color="#ef2020"
+            />
+
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/radiant_ban_5"
@@ -323,7 +328,8 @@
                     android:layout_height="30dp"
                     android:src="@drawable/h_15"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"/>
+                    app:civ_border_color="#ef2020"
+            />
         </LinearLayout>
 
         <!--Dire Bans-->
@@ -334,33 +340,13 @@
                         android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_1"
+                    android:id="@+id/dire_ban_5"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_16"
+                    android:src="@drawable/h_20"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_2"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_17"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_3"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_18"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_4"
+                    android:layout_alignParentEnd="true"
             />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -374,13 +360,33 @@
             />
             <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_5"
+                    android:id="@+id/dire_ban_3"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/h_20"
+                    android:src="@drawable/h_18"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#ef2020"
-                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@id/dire_ban_4"
+            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/dire_ban_2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/h_17"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#ef2020"
+                    android:layout_toStartOf="@id/dire_ban_3"
+            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/dire_ban_1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/h_16"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#ef2020"
+                    android:layout_toStartOf="@id/dire_ban_2"
             />
         </RelativeLayout>
     </LinearLayout>

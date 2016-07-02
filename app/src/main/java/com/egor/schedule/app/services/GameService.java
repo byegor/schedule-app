@@ -1,7 +1,6 @@
 package com.egor.schedule.app.services;
 
 import com.eb.schedule.shared.bean.GameBean;
-import com.egor.schedule.app.model.Game;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
