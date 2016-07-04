@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import com.egor.schedule.app.adapter.MatchFragment;
+import com.egor.schedule.app.adapter.MatchWrapperFragment;
 import com.egor.schedule.app.adapter.MatchFragmentAdapter;
 
 /**
@@ -35,7 +35,7 @@ public class MatchTabActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         MatchFragmentAdapter adapter = new MatchFragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MatchFragment());
+        adapter.addFragment(new MatchWrapperFragment());
 //        adapter.addFragment(new OneFragment(), "ONE");
 //        adapter.addFragment(new TwoFragment(), "TWO");
 //        adapter.addFragment(new ThreeFragment(), "THREE");
