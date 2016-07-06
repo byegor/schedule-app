@@ -1,11 +1,10 @@
-package com.egor.schedule.app.adapter;
+package com.egor.schedule.app.fragment;
 
 
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import static com.egor.schedule.app.utils.ImageUtils.BASE_URL;
 /**
  * Created by Egor on 02.07.2016.
  */
-public class MatchTeamInfoFragment extends Fragment {
+public class MatchInfoFragment extends Fragment {
 
     private Match match;
 
@@ -36,8 +35,8 @@ public class MatchTeamInfoFragment extends Fragment {
         this.match = (Match) getArguments().getSerializable("match");
     }
 
-    public static MatchTeamInfoFragment newInstance(Match match) {
-        MatchTeamInfoFragment fragment = new MatchTeamInfoFragment();
+    public static MatchInfoFragment newInstance(Match match) {
+        MatchInfoFragment fragment = new MatchInfoFragment();
         Bundle args = new Bundle();
         args.putSerializable("match", match);
         fragment.setArguments(args);
@@ -89,7 +88,9 @@ public class MatchTeamInfoFragment extends Fragment {
         }
 
         TextView duration = (TextView) view.findViewById(R.id.match_duration);
-        duration.setText(match.getDuration().toString());
+        if (match.getDuration() != null) {
+            duration.setText(match.getDuration().toString());
+        }
 
         TextView netWorthAdv = (TextView) view.findViewById(R.id.net_worth_adv);
         List<Double> networthList = match.getNetworth();
@@ -112,11 +113,13 @@ public class MatchTeamInfoFragment extends Fragment {
     }
 
     private void initPicks(View view, List<HeroBean> heroes, String prefix) {
-        for (int i = 0; i < heroes.size(); i++) {
-            ImageView pick = (ImageView) view.findViewById(getResources().getIdentifier(prefix + (i + 1), "id", getParentFragment().getActivity().getPackageName()));
-            HeroBean hero = heroes.get(i);
-            int drawableId = getResources().getIdentifier("h_" + hero.getId(), "drawable", getParentFragment().getActivity().getPackageName());
-            pick.setImageResource(drawableId);
+        if (heroes != null) {
+            for (int i = 0; i < heroes.size(); i++) {
+                ImageView pick = (ImageView) view.findViewById(getResources().getIdentifier(prefix + (i + 1), "id", getParentFragment().getActivity().getPackageName()));
+                HeroBean hero = heroes.get(i);
+                int drawableId = getResources().getIdentifier("h_" + hero.getId(), "drawable", getParentFragment().getActivity().getPackageName());
+                pick.setImageResource(drawableId);
+            }
         }
     }
 

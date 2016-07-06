@@ -2,9 +2,13 @@ package com.egor.schedule.app;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.adapter.ScheduleAdapter;
@@ -26,9 +30,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ListView viewById = (ListView) findViewById(R.id.list);
+        final ListView listView = (ListView) findViewById(R.id.list);
         adapter = new ScheduleAdapter(MainActivity.this);
-        viewById.setAdapter(adapter);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (!adapter.isEmpty()) {
+                    GameBean item = adapter.getItem(position);
+                    Intent launchActivity = new Intent(MainActivity.this, MatchTabActivity.class);
+                    startActivity(launchActivity);
+                }
+            }
+        });
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

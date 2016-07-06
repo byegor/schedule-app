@@ -1,4 +1,4 @@
-package com.egor.schedule.app.adapter;
+package com.egor.schedule.app.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.eb.schedule.shared.bean.Match;
 import com.egor.schedule.app.R;
 
@@ -25,7 +24,8 @@ public class MatchWrapperFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.team_info, MatchTeamInfoFragment.newInstance(match), "team_info_frag");
+        transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
+        transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
         transaction.commit();
     }
 
