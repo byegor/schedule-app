@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.List;
-
+//todo what if new patch bring new hero so i need to download hero image, the same for items
 public class MainActivity extends Activity {
 
     private SwipeRefreshLayout swipeContainer;
