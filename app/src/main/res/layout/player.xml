@@ -60,7 +60,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_1"
                     android:layout_gravity="start"
             />
             <ImageView
@@ -68,14 +68,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_2"
             />
             <ImageView
                     android:id="@+id/item_3"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_3"
                     android:layout_gravity="start"
             />
 
@@ -91,7 +91,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_4"
                     android:layout_gravity="start"
             />
             <ImageView
@@ -99,7 +99,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_5"
                     android:layout_gravity="start"
             />
             <ImageView
@@ -107,7 +107,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/h_21"
+                    android:src="@drawable/i_recipe"
                     android:layout_gravity="start"
             />
 

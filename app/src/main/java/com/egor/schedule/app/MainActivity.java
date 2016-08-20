@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
                 if (!adapter.isEmpty()) {
                     GameBean item = adapter.getItem(position);
                     Intent launchActivity = new Intent(MainActivity.this, MatchTabActivity.class);
+                    launchActivity.putExtra("gameId", item.getId());
                     startActivity(launchActivity);
                 }
             }
@@ -69,7 +70,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(Call<List<GameBean>> call, Throwable t) {
-                Log.e("CURRENT", "couldn't get games", t);
+                Log.e("API", "couldn't get games", t);
             }
         };
     }

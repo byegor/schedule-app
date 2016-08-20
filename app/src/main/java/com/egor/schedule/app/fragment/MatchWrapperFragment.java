@@ -16,17 +16,24 @@ import com.egor.schedule.app.R;
  */
 public class MatchWrapperFragment extends Fragment {
 
-    private Match match = new Match();
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle arguments = getArguments();
+        Match match = (Match) arguments.get("match");
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
-        transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
+//        transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
         transaction.commit();
+    }
+
+    public static MatchWrapperFragment newInstance(Match match) {
+        MatchWrapperFragment fragment = new MatchWrapperFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("match", match);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override

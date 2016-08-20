@@ -73,7 +73,7 @@ public class MatchInfoFragment extends Fragment {
             radiantName.setText(radiantTeam.getName());
 
             TextView score = (TextView) view.findViewById(R.id.radiant_score);
-            score.setText(match.getRadiantScore());
+            score.setText(match.getRadiantScore() + "");
         }
 
         TeamBean direTeam = match.getDireTeam();
@@ -84,7 +84,7 @@ public class MatchInfoFragment extends Fragment {
             direName.setText(direTeam.getName());
 
             TextView score = (TextView) view.findViewById(R.id.dire_team_name);
-            score.setText(match.getDireScore());
+            score.setText(match.getDireScore() + "");
         }
 
         TextView duration = (TextView) view.findViewById(R.id.match_duration);
@@ -106,9 +106,9 @@ public class MatchInfoFragment extends Fragment {
         }
 
 //picks and bans
-        initPicks(view, match.getRadianPicks(), "radiant_prick_");
+        initPicks(view, match.getRadianPicks(), "radiant_pick_");
         initPicks(view, match.getRadianBans(), "radiant_ban_");
-        initPicks(view, match.getDirePicks(), "dire_prick_");
+        initPicks(view, match.getDirePicks(), "dire_pick_");
         initPicks(view, match.getDireBans(), "radiant_ban_");
     }
 
