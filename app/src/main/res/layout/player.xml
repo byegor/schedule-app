@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="horizontal">
 
 
@@ -53,7 +53,10 @@
                       android:id="@+id/items_first"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:orientation="horizontal">
+                      android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
 
             <ImageView
                     android:id="@+id/item_1"
@@ -62,14 +65,19 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/i_1"
                     android:layout_gravity="start"
-            />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp" />
             <ImageView
                     android:id="@+id/item_2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/i_2"
-            />
+                android:layout_gravity="start"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp" />
             <ImageView
                     android:id="@+id/item_3"
                     android:layout_width="30dp"
@@ -77,12 +85,15 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/i_3"
                     android:layout_gravity="start"
-            />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginRight="5dp" />
 
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="wrap_content"
-                  android:layout_height="295dp"
+                  android:layout_height="wrap_content"
                   android:orientation="horizontal"
         >
 
@@ -93,7 +104,8 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/i_4"
                     android:layout_gravity="start"
-            />
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp" />
             <ImageView
                     android:id="@+id/item_5"
                     android:layout_width="30dp"
@@ -101,7 +113,8 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/i_5"
                     android:layout_gravity="start"
-            />
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp" />
             <ImageView
                     android:id="@+id/item_6"
                     android:layout_width="30dp"
@@ -109,7 +122,9 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/i_recipe"
                     android:layout_gravity="start"
-            />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp" />
 
         </LinearLayout>
     </LinearLayout>

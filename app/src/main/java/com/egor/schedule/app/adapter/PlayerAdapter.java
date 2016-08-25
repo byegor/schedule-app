@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eb.schedule.shared.bean.GameBean;
+import com.eb.schedule.shared.bean.HeroBean;
+import com.eb.schedule.shared.bean.Item;
 import com.eb.schedule.shared.bean.Player;
 import com.egor.schedule.app.R;
 import com.squareup.picasso.Picasso;
@@ -43,9 +45,31 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
 
         ImageView heroImage = (ImageView) rowView.findViewById(R.id.hero_log);
         Player player = players.get(position);
-        String heroLogo = "http://192.168.1.26:8085/image/" + player.getHero().getId();
-        Log.i("PICASSO", heroLogo);
-        Picasso.with(context).load(heroLogo).into(heroImage);
+        int drawableId = context.getResources().getIdentifier("h_" + player.getHero().getId(), "drawable", context.getPackageName());
+        Picasso.with(context).load(drawableId).into(heroImage);
+
+        TextView playerName = (TextView) rowView.findViewById(R.id.player_name);
+        playerName.setText(player.getName());
+
+        TextView level = (TextView) rowView.findViewById(R.id.level_status);
+        level.setText("Lvl " + player.getLevel() + ": " + player.getHero().getName());
+
+        TextView kda = (TextView) rowView.findViewById(R.id.kda);
+        kda.setText("K/D/A: " + player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+
+        List<Item> items = player.getItems();
+        for (int i = 0; i < items.size(); i++) {
+            ImageView itemImage = (ImageView) rowView.findViewById(context.getResources().getIdentifier("item_" + (i + 1), "id", context.getPackageName()));
+            Item item = items.get(i);
+            int itemId = context.getResources().getIdentifier("i_" + item.getId(), "drawable", context.getPackageName());
+            if (itemId != 0) {
+                Picasso.with(context).load(itemId).resize(30, 30).centerCrop().into(itemImage);
+            } else {
+                if (item.getName().contains("recipe")) {
+                    Picasso.with(context).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
+                }
+            }
+        }
 
         return rowView;
     }
