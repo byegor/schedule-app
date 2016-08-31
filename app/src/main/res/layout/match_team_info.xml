@@ -75,38 +75,17 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent">
             <TextView
-                    android:id="@+id/radiant_score"
+                    android:id="@+id/match_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/score"
                     android:textSize="40sp"
                     android:layout_gravity="center_vertical"
-                    android:layout_centerVertical="true" android:layout_alignParentStart="true"
-                    android:layout_marginStart="2dp" android:paddingRight="5dp"/>
-            <TextView
-                    android:id="@+id/dash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="-"
-                    android:textSize="40sp"
-                    android:gravity="start"
-                    android:layout_toEndOf="@+id/radiant_score"
-                    android:layout_alignBottom="@+id/radiant_score"
-                    android:layout_alignTop="@+id/radiant_score"
+                android:paddingRight="5dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
-            />
-            <TextView
-                    android:id="@+id/dire_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/score"
-                    android:textSize="40sp"
-                    android:gravity="end"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
-                    android:layout_gravity="center_vertical"
 
-                    android:layout_centerVertical="true" android:layout_toEndOf="@+id/dash"/>
             <TextView
                     android:id="@+id/match_duration"
                     android:layout_width="wrap_content"

@@ -72,8 +72,8 @@ public class MatchInfoFragment extends Fragment {
             TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
             radiantName.setText(radiantTeam.getName());
 
-            TextView score = (TextView) view.findViewById(R.id.radiant_score);
-            score.setText(match.getRadiantScore() + "");
+            TextView score = (TextView) view.findViewById(R.id.match_score);
+            score.setText(match.getMatchScore());
         }
 
         TeamBean direTeam = match.getDireTeam();
@@ -82,14 +82,11 @@ public class MatchInfoFragment extends Fragment {
             Picasso.with(getParentFragment().getActivity()).load(BASE_URL + direTeam.getLogo()).into((ImageView) direLogo);
             TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
             direName.setText(direTeam.getName());
-
-            TextView score = (TextView) view.findViewById(R.id.dire_team_name);
-            score.setText(match.getDireScore() + "");
         }
 
         TextView duration = (TextView) view.findViewById(R.id.match_duration);
         if (match.getDuration() != null) {
-            duration.setText(match.getDuration().toString());
+            duration.setText(match.getDuration());
         }
 
         TextView netWorthAdv = (TextView) view.findViewById(R.id.net_worth_adv);
