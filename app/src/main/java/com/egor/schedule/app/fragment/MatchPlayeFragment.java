@@ -2,6 +2,8 @@ package com.egor.schedule.app.fragment;
 
 
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -33,12 +35,15 @@ import static com.egor.schedule.app.utils.ImageUtils.BASE_URL;
 public class MatchPlayeFragment extends Fragment {
 
     private List<Player> players;
+    private TeamBean team;
+    private Boolean radiant;
     PlayerAdapter adapter;
 
-    public static MatchPlayeFragment newInstance(List<Player> players) {
+    public static MatchPlayeFragment newInstance(TeamBean teamBean, boolean radiant) {
         MatchPlayeFragment fragment = new MatchPlayeFragment();
         Bundle args = new Bundle();
-        args.putSerializable("players", (Serializable) players);
+        args.putSerializable("team", teamBean);
+        args.putSerializable("radiant", radiant);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,7 +52,9 @@ public class MatchPlayeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.players = (List<Player>) getArguments().getSerializable("players");
+        this.team = (TeamBean) getArguments().getSerializable("team");
+        this.radiant = (Boolean) getArguments().getSerializable("radiant");
+        this.players = team.getPlayers();
         adapter = new PlayerAdapter(this.getActivity());
         adapter.addAll(players);
     }
@@ -59,6 +66,14 @@ public class MatchPlayeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        if (radiant) {
+            view.findViewById(R.id.team_panel).setBackgroundColor(Color.parseColor("#64bd5f"));
+        } else {
+            view.findViewById(R.id.team_panel).setBackgroundColor(Color.RED);
+        }
+
+        TextView teamName = (TextView) view.findViewById(R.id.team_name);
+        teamName.setText(team.getName());
         final ListView listView = (ListView) view.findViewById(R.id.list);
         listView.setAdapter(adapter);
     }

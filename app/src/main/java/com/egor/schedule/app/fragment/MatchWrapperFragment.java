@@ -25,7 +25,8 @@ public class MatchWrapperFragment extends Fragment {
             FragmentManager fragmentManager = getChildFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.add(R.id.team_info, MatchInfoFragment.newInstance(match), "team_info_frag");
-            transaction.add(R.id.player_info, MatchPlayeFragment.newInstance(match.getRadiantTeam().getPlayers()), "player_info_frag");
+            transaction.add(R.id.radiant_info_frag, MatchPlayeFragment.newInstance(match.getRadiantTeam(), true), "radiant_info_frag");
+            transaction.add(R.id.dire_info_frag, MatchPlayeFragment.newInstance(match.getDireTeam(), false), "dire_info_frag");
             transaction.commit();
         }
     }
