@@ -15,6 +15,7 @@ import com.eb.schedule.shared.bean.HeroBean;
 import com.eb.schedule.shared.bean.Item;
 import com.eb.schedule.shared.bean.Player;
 import com.egor.schedule.app.R;
+import com.egor.schedule.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -63,7 +64,7 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
             Item item = items.get(i);
             int itemId = context.getResources().getIdentifier("i_" + item.getId(), "drawable", context.getPackageName());
             if (itemId != 0) {
-                Picasso.with(context).load(itemId).resize(30, 30).centerCrop().into(itemImage);
+                Picasso.with(context).load(ImageUtils.getItemUrl(item.getName())).resize(30, 30).centerCrop().into(itemImage);
             } else {
                 if (item.getName().contains("recipe")) {
                     Picasso.with(context).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);

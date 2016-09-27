@@ -15,11 +15,10 @@ import com.eb.schedule.shared.bean.LeagueBean;
 import com.eb.schedule.shared.bean.Match;
 import com.eb.schedule.shared.bean.TeamBean;
 import com.egor.schedule.app.R;
+import com.egor.schedule.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import static com.egor.schedule.app.utils.ImageUtils.BASE_URL;
 
 /**
  * Created by Egor on 02.07.2016.
@@ -68,7 +67,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean radiantTeam = match.getRadiantTeam();
         if (radiantTeam != null) {
             View radiantLogo = view.findViewById(R.id.radiant_logo);
-            Picasso.with(getParentFragment().getActivity()).load(BASE_URL + radiantTeam.getLogo()).into((ImageView) radiantLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).into((ImageView) radiantLogo);
             TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
             radiantName.setText(radiantTeam.getName());
 
@@ -79,7 +78,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean direTeam = match.getDireTeam();
         if (direTeam != null) {
             View direLogo = view.findViewById(R.id.dire_logo);
-            Picasso.with(getParentFragment().getActivity()).load(BASE_URL + direTeam.getLogo()).into((ImageView) direLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).into((ImageView) direLogo);
             TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
             direName.setText(direTeam.getName());
         }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.R;
+import com.egor.schedule.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -45,10 +46,8 @@ public class ScheduleAdapter extends ArrayAdapter<GameBean> {
         ImageView radiantImage = (ImageView)rowView.findViewById(R.id.radiant_logo);
         ImageView direImage = (ImageView)rowView.findViewById(R.id.dire_logo);
         GameBean game = games.get(position);
-        String radiantLogo = "http://192.168.1.26:8085/image/" + game.getRadiant().getLogo();
-        Log.i("PICASSO",radiantLogo);
-        Picasso.with(context).load(radiantLogo).into(radiantImage);
-        Picasso.with(context).load("http://192.168.1.26:8085/image/" + game.getDire().getLogo()).resize(65, 65).centerCrop().into(direImage);
+        Picasso.with(context).load(ImageUtils.getTeamUrl(game.getRadiant().getLogo())).resize(65, 65).centerCrop().into(radiantImage);
+        Picasso.with(context).load(ImageUtils.getTeamUrl(game.getDire().getLogo())).resize(65, 65).centerCrop().into(direImage);
 
         TextView leagueName = (TextView) rowView.findViewById(R.id.league_name);
         leagueName.setText(game.getLeague().getName());
