@@ -1,5 +1,7 @@
 package com.egor.schedule.app.services;
 
+import com.egor.schedule.app.BuildConfig;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -9,7 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ServiceGenerator {
 
-    public static final String API_BASE_URL = "http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com";
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
@@ -17,7 +18,7 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(API_BASE_URL)
+                    .baseUrl(BuildConfig.REST_HOST)
                     .addConverterFactory(GsonConverterFactory.create());
 
     public static <S> S createService(Class<S> serviceClass) {

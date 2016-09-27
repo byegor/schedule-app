@@ -35,7 +35,7 @@ public class MatchFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "GAME " + position;
+        return "GAME " + (position + 1);
     }
 }
 

@@ -34,6 +34,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        devel {
+            buildConfigField 'String', 'REST_HOST', '"http://localhost:8080"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://localhost:8185"'
+        }
+
+        prod {
+            buildConfigField 'String', 'REST_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com"'
+        }
+    }
 }
 
 
