@@ -1,372 +1,356 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <RelativeLayout
-            android:id="@+id/schedule_panel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible">
-        <TextView
-                android:id="@+id/league_name"
-                android:layout_width="match_parent"
-                android:layout_height="20dip"
-                android:gravity="start"
-                android:layout_marginStart="15dp"
-                android:text="@string/league_name"
-        />
+        android:id="@+id/schedule_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
         <TextView
-                android:id="@+id/series_type"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/series_type"
-                android:textSize="15sp"
-                android:gravity="start"
-                android:paddingTop="5dp"
-                android:layout_below="@+id/league_name"
-                android:layout_marginStart="15dp"
-                android:layout_centerVertical="true"
-        />
+            android:id="@+id/league_name"
+            android:layout_width="match_parent"
+            android:layout_height="20dip"
+            android:layout_marginStart="15dp"
+            android:gravity="start"
+            android:text="@string/league_name" />
+
+        <TextView
+            android:id="@+id/series_type"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/league_name"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:gravity="start"
+            android:paddingTop="5dp"
+            android:text="@string/series_type"
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:weightSum="3"
-                  android:baselineAligned="false">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <!--Radiant Block-->
         <!--TODO IMAGE PLACEHOLDERS-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:orientation="vertical"
-                      android:layout_weight="1"
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
-                    android:id="@+id/radiant_logo"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/vega_squadron"
-                    android:layout_gravity="start"
-            />
+                android:id="@+id/radiant_logo"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="start"
+                android:scaleType="fitXY"
+                android:src="@drawable/vega_squadron" />
 
             <TextView
-                    android:id="@+id/radiant_team_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/radiant_name"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:paddingTop="2dp"
-                    android:layout_gravity="center"
-            />
+                android:id="@+id/radiant_team_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:text="@string/radiant_name"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <!--Score-->
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent">
-            <TextView
-                    android:id="@+id/match_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/score"
-                    android:textSize="40sp"
-                    android:layout_gravity="center_vertical"
-                android:paddingRight="5dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
 
             <TextView
-                    android:id="@+id/match_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/duration"
-                    android:paddingBottom="15dp"
-                    android:textSize="17sp"
-            />
+                android:id="@+id/match_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:paddingBottom="15dp"
+                android:text="@string/duration"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/match_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/score"
+                android:textSize="40sp"
+                android:maxLines="1"
+                android:gravity="center_horizontal"
+                android:layout_above="@+id/match_duration"
+                android:layout_alignParentStart="true"
+               />
 
         </RelativeLayout>
 
 
         <!--Dire Block-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:orientation="vertical"
-                      android:layout_weight="1"
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content">
-            <ImageView android:id="@+id/dire_logo"
-                       android:layout_width="110dp"
-                       android:layout_height="110dp"
-                       android:scaleType="fitXY"
-                       android:src="@drawable/natus_vincere"
-                       android:layout_gravity="end"
-            />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/dire_logo"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="end"
+                android:scaleType="fitXY"
+                android:src="@drawable/natus_vincere" />
+
             <TextView
-                    android:id="@+id/dire_team_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dire_name"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:paddingTop="2dp"
-                    android:layout_gravity="center"
-            />
+                android:id="@+id/dire_team_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:text="@string/dire_name"
+                android:textSize="15sp" />
 
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-            android:id="@+id/net_worth_adv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/net_worth_adv"
-            android:paddingBottom="15dp"
-            android:textSize="17sp"
-    />
+        android:id="@+id/net_worth_adv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="15dp"
+        android:text="@string/net_worth_adv"
+        android:textSize="17sp" />
 
     <!--Radiand And Dire Picks-->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:weightSum="2"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
         <!--Radiant Picks-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:orientation="horizontal"
-                      android:layout_weight="1"
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_pick_1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_1"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_pick_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_2"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_pick_3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_3"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_pick_4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_4"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_pick_5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_5"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_pick_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_1"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_pick_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_2"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_pick_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_3"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_pick_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_4"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_pick_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_5"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
         </LinearLayout>
 
         <!--Dire Picks-->
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_pick_5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_10"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"
-                    android:layout_alignParentEnd="true"
-            />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_pick_4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_9"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_pick_5"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_pick_3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_8"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_pick_4"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_pick_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_7"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"
-                    android:layout_toStartOf="@id/dire_pick_3"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_pick_1"
-                    android:layout_toStartOf="@id/dire_pick_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_6"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#079f05"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_pick_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/h_10"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_pick_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_pick_5"
+                android:src="@drawable/h_9"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_pick_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_pick_4"
+                android:src="@drawable/h_8"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_pick_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_pick_3"
+                android:src="@drawable/h_7"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_pick_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_pick_2"
+                android:src="@drawable/h_6"
+                app:civ_border_color="#079f05"
+                app:civ_border_width="2dp" />
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:weightSum="2"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
         <!--Radiant Bans-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:orientation="horizontal"
-                      android:layout_weight="1"
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_ban_1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_11"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_ban_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_12"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_ban_3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_13"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_ban_4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_14"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-            />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/radiant_ban_5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_15"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_ban_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_11"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_ban_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_12"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_ban_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_13"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_ban_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_14"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/radiant_ban_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/h_15"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
         </LinearLayout>
 
         <!--Dire Bans-->
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_20"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_alignParentEnd="true"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_19"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_5"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_18"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_4"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_17"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_3"
-            />
-            <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dire_ban_1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/h_16"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#ef2020"
-                    android:layout_toStartOf="@id/dire_ban_2"
-            />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_ban_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/h_20"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_ban_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_ban_5"
+                android:src="@drawable/h_19"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_ban_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_ban_4"
+                android:src="@drawable/h_18"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_ban_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_ban_3"
+                android:src="@drawable/h_17"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dire_ban_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/dire_ban_2"
+                android:src="@drawable/h_16"
+                app:civ_border_color="#ef2020"
+                app:civ_border_width="2dp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
