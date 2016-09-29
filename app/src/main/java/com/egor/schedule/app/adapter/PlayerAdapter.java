@@ -62,13 +62,10 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
         for (int i = 0; i < items.size(); i++) {
             ImageView itemImage = (ImageView) rowView.findViewById(context.getResources().getIdentifier("item_" + (i + 1), "id", context.getPackageName()));
             Item item = items.get(i);
-            int itemId = context.getResources().getIdentifier("i_" + item.getId(), "drawable", context.getPackageName());
-            if (itemId != 0) {
+            if (item.getName().contains("recipe")) {
+                Picasso.with(context).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
+            }else{
                 Picasso.with(context).load(ImageUtils.getItemUrl(item.getName())).resize(30, 30).centerCrop().into(itemImage);
-            } else {
-                if (item.getName().contains("recipe")) {
-                    Picasso.with(context).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
-                }
             }
         }
 
