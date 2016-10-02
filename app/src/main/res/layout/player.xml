@@ -79,8 +79,7 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_1" />
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/item_2"
@@ -90,8 +89,7 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_2" />
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/item_3"
@@ -102,8 +100,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_3" />
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
@@ -119,8 +116,7 @@
                 android:layout_gravity="start"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_4" />
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/item_5"
@@ -129,8 +125,7 @@
                 android:layout_gravity="start"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_5" />
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/item_6"
@@ -140,8 +135,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/i_recipe" />
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
     </LinearLayout>

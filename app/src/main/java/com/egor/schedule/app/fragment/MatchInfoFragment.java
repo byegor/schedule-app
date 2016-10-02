@@ -23,6 +23,8 @@ import java.util.List;
 /**
  * Created by Egor on 02.07.2016.
  */
+//todo display winner
+    //todo check live games
 public class MatchInfoFragment extends Fragment {
 
     private Match match;
@@ -67,7 +69,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean radiantTeam = match.getRadiantTeam();
         if (radiantTeam != null) {
             View radiantLogo = view.findViewById(R.id.radiant_logo);
-            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).into((ImageView) radiantLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).resize(100, 100).centerCrop().into((ImageView) radiantLogo);
             TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
             radiantName.setText(radiantTeam.getName());
 
@@ -78,7 +80,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean direTeam = match.getDireTeam();
         if (direTeam != null) {
             View direLogo = view.findViewById(R.id.dire_logo);
-            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).into((ImageView) direLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).resize(100, 100).centerCrop().into((ImageView) direLogo);
             TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
             direName.setText(direTeam.getName());
         }
@@ -99,6 +101,8 @@ public class MatchInfoFragment extends Fragment {
             } else {
                 netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName()));
             }
+        }else {
+            netWorthAdv.setText("");
         }
 
 //picks and bans
