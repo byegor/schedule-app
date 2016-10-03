@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.R;
 import com.egor.schedule.app.utils.ImageUtils;
@@ -78,9 +80,15 @@ public class ScheduleAdapter extends ArrayAdapter<GameBean> {
     }
 
     @Override
+
     public void addAll(Collection<? extends GameBean> collection) {
-        games.addAll(collection);
-        super.addAll(collection);
+        if(collection != null){
+            games.addAll(collection);
+            super.addAll(collection);
+        }else{
+            Toast.makeText(context, "No games found to display :(", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override

@@ -14,6 +14,7 @@ import com.egor.schedule.app.R;
 /**
  * Created by Egor on 22.06.2016.
  */
+//todo refresh on swipe
 public class MatchWrapperFragment extends Fragment {
 
     @Override
