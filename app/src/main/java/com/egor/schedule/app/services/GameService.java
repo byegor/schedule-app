@@ -8,7 +8,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Egor on 26.05.2016.
@@ -16,8 +19,11 @@ import java.util.List;
 public interface GameService {
 
     @GET("/games/current")
-    Call<List<GameBean>> currentGames();
+    Call<Map<String, List<GameBean>>> currentGames();
 
     @GET("/games/game/{gameId}")
     Call<List<Match>> getMatchesByGameId(@Path("gameId")int gameId);
+
+    @GET("/games/match/{matchId}")
+    Call<Match> getMatchById(@Path("matchId")long matchId);
 }

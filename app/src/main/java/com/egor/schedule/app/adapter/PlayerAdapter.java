@@ -1,9 +1,6 @@
 package com.egor.schedule.app.adapter;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eb.schedule.shared.bean.GameBean;
-import com.eb.schedule.shared.bean.HeroBean;
 import com.eb.schedule.shared.bean.Item;
 import com.eb.schedule.shared.bean.Player;
 import com.egor.schedule.app.R;
 import com.egor.schedule.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,7 +28,7 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
 
 
     public PlayerAdapter(Activity context) {
-        super(context, R.layout.mylist);
+        super(context, R.layout.schedule_list_item);
         this.context = context;
         this.players = new ArrayList<Player>();
 

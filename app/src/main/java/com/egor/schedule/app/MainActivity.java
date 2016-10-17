@@ -5,20 +5,28 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.adapter.ScheduleAdapter;
+import com.egor.schedule.app.adapter.schedule.ListAddapterItem;
+import com.egor.schedule.app.adapter.schedule.ListHeader;
+import com.egor.schedule.app.adapter.schedule.ListItem;
 import com.egor.schedule.app.services.ServiceGenerator;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 //todo what if new patch bring new hero so i need to download hero image, the same for items
+//todo show view and then load info
 public class MainActivity extends Activity {
 
     private SwipeRefreshLayout swipeContainer;
@@ -37,10 +45,12 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (!adapter.isEmpty()) {
-                    GameBean item = adapter.getItem(position);
-                    Intent launchActivity = new Intent(MainActivity.this, MatchTabActivity.class);
-                    launchActivity.putExtra("gameId", item.getId());
-                    startActivity(launchActivity);
+                    ListAddapterItem item = adapter.getItem(position);
+                    if(!item.isHeader()) {
+                        Intent launchActivity = new Intent(MainActivity.this, MatchTabActivity.class);
+                        launchActivity.putExtra("gameId", ((GameBean)item.getBody()).getId());
+                        startActivity(launchActivity);
+                    }
                 }
             }
         });
@@ -49,27 +59,36 @@ public class MainActivity extends Activity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Call<List<GameBean>> games = ServiceGenerator.getGameService().currentGames();
+                Call<Map<String, List<GameBean>>> games = ServiceGenerator.getGameService().currentGames();
                 games.enqueue(getCallBack());
             }
         });
 
-        Call<List<GameBean>> games = ServiceGenerator.getGameService().currentGames();
+        Call<Map<String, List<GameBean>>> games = ServiceGenerator.getGameService().currentGames();
         games.enqueue(getCallBack());
 
     }
 
-    private Callback<List<GameBean>> getCallBack() {
-        return new Callback<List<GameBean>>() {
+    private Callback<Map<String, List<GameBean>>> getCallBack() {
+        return new Callback<Map<String, List<GameBean>>>() {
             @Override
-            public void onResponse(Call<List<GameBean>> call, Response<List<GameBean>> response) {
+            public void onResponse(Call<Map<String, List<GameBean>>> call, Response<Map<String, List<GameBean>>> response) {
                 adapter.clear();
-                adapter.addAll(response.body());
+                List<ListAddapterItem> listEntries = new ArrayList<ListAddapterItem>();
+                Map<String, List<GameBean>> body = response.body();
+                for (Map.Entry<String, List<GameBean>> entry : body.entrySet()) {
+                    listEntries.add(new ListHeader(entry.getKey()));
+                    for (GameBean gameBean : entry.getValue()) {
+                        listEntries.add(new ListItem(gameBean));
+                    }
+                }
+
+                adapter.addAll(listEntries);
                 swipeContainer.setRefreshing(false);
             }
 
             @Override
-            public void onFailure(Call<List<GameBean>> call, Throwable t) {
+            public void onFailure(Call<Map<String, List<GameBean>>> call, Throwable t) {
                 Log.e("API", "couldn't get games", t);
             }
         };

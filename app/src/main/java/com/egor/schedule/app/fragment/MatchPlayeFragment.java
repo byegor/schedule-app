@@ -28,6 +28,12 @@ public class MatchPlayeFragment extends Fragment {
     private Boolean radiant;
     PlayerAdapter adapter;
 
+    public void setTeam(TeamBean team) {
+        this.team = team;
+        adapter.clear();
+        adapter.addAll(team.getPlayers());
+    }
+
     public static MatchPlayeFragment newInstance(TeamBean teamBean, boolean radiant) {
         MatchPlayeFragment fragment = new MatchPlayeFragment();
         Bundle args = new Bundle();
