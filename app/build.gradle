@@ -37,7 +37,8 @@ android {
     productFlavors {
         devel {
             buildConfigField 'String', 'REST_HOST', '"http://192.168.1.26:8080"'
-            buildConfigField 'String', 'IMAGE_HOST', '"http://192.168.1.26:8185"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://192.168.1.26:8085"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://192.168.1.26:8085"'
         }
 
         prod {
