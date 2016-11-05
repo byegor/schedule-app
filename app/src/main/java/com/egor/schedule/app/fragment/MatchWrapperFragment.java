@@ -31,9 +31,6 @@ import retrofit2.Response;
 /**
  * Created by Egor on 22.06.2016.
  */
-//todo refresh on swipe
-//todo series type
-//todo add winner
 //todo wrap all in try catch
 public class MatchWrapperFragment extends Fragment {
 

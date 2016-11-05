@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.adapter.ScheduleAdapter;
@@ -56,6 +57,7 @@ public class MainActivity extends Activity {
         });
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setRefreshing(true);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -89,6 +91,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(Call<Map<String, List<GameBean>>> call, Throwable t) {
+                Toast.makeText(null, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
                 Log.e("API", "couldn't get games", t);
             }
         };
