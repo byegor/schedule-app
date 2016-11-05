@@ -23,16 +23,9 @@ import java.util.List;
  */
 public class MatchPlayeFragment extends Fragment {
 
-    private List<Player> players;
     private TeamBean team;
     private Boolean radiant;
     PlayerAdapter adapter;
-
-    public void setTeam(TeamBean team) {
-        this.team = team;
-        adapter.clear();
-        adapter.addAll(team.getPlayers());
-    }
 
     public static MatchPlayeFragment newInstance(TeamBean teamBean, boolean radiant) {
         MatchPlayeFragment fragment = new MatchPlayeFragment();
@@ -49,9 +42,8 @@ public class MatchPlayeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.team = (TeamBean) getArguments().getSerializable("team");
         this.radiant = (Boolean) getArguments().getSerializable("radiant");
-        this.players = team.getPlayers();
         adapter = new PlayerAdapter(this.getActivity());
-        adapter.addAll(players);
+        adapter.addAll(team.getPlayers());
     }
 
     @Override

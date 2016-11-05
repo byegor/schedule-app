@@ -42,8 +42,8 @@ android {
         }
 
         prod {
-            buildConfigField 'String', 'REST_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com"'
-            buildConfigField 'String', 'IMAGE_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com"'
+            buildConfigField 'String', 'REST_HOST', '"http://ec2-54-213-255-99.us-west-2.compute.amazonaws.com"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://ec2-54-213-255-99.us-west-2.compute.amazonaws.com"'
         }
     }
     packagingOptions {

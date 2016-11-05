@@ -1,12 +1,17 @@
 package com.egor.schedule.app;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Visibility;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
 import com.eb.schedule.shared.bean.Match;
@@ -33,6 +38,8 @@ public class MatchTabActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swipe);
 
+
+        final Activity activity = this;
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         final MatchFragmentAdapter adapter = new MatchFragmentAdapter(getSupportFragmentManager());
@@ -46,27 +53,28 @@ public class MatchTabActivity extends FragmentActivity {
                 @Override
                 public void onResponse(Call<List<Match>> call, Response<List<Match>> response) {
                     List<Match> matches = response.body();
-                    if(matches != null){
-                        for (Match m : matches) {
-                            adapter.addFragment(MatchWrapperFragment.newInstance(m));
+                    if (matches != null) {
+                        if(matches.isEmpty()){
+                            Toast.makeText(activity, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
+                        }else {
+                            for (Match m : matches) {
+                                adapter.addFragment(MatchWrapperFragment.newInstance(m));
+                            }
+                            viewPager.setAdapter(adapter);
+                            tabLayout.setupWithViewPager(viewPager);
                         }
-                        viewPager.setAdapter(adapter);
-                        tabLayout.setupWithViewPager(viewPager);
                     }
-
                 }
 
                 @Override
                 public void onFailure(Call<List<Match>> call, Throwable t) {
+                    Toast.makeText(activity, "Couldn't get match info. Try refresh", Toast.LENGTH_LONG).show();
                     Log.e("API", "couldn't get matches by gameId: " + gameId, t);
                 }
             });
         }
 
 //        viewPager.setAdapter(adapter);
-
-
-
 
 
         // adding functionality to tab and viewpager to manage each other when a page is changed or when a tab is selected

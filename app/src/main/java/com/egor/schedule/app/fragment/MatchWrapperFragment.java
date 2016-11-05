@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.eb.schedule.shared.bean.GameBean;
 import com.eb.schedule.shared.bean.Match;
@@ -51,13 +52,19 @@ public class MatchWrapperFragment extends Fragment {
 
         if (match != null) {
             swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeMatchContainer);
-            swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    Call<Match> games = ServiceGenerator.getGameService().getMatchById(match.getMatchId());
-                    games.enqueue(getCallBack());
-                }
-            });
+
+            if(match.getMatchStatus() == 1){
+                swipeContainer.setEnabled(true);
+                swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Call<Match> games = ServiceGenerator.getGameService().getMatchById(match.getMatchId());
+                        games.enqueue(getCallBack());
+                    }
+                });
+            }else{
+                swipeContainer.setEnabled(false);
+            }
 
 
             FragmentManager fragmentManager = getChildFragmentManager();
@@ -89,10 +96,16 @@ public class MatchWrapperFragment extends Fragment {
         return new Callback<Match>() {
             @Override
             public void onResponse(Call<Match> call, Response<Match> response) {
-                Match body = response.body();
-                infoFragment.setMatch(body);
-                direFragment.setTeam(body.getDireTeam());
-                radiantFragment.setTeam(body.getRadiantTeam());
+                Match match = response.body();
+                FragmentManager fragmentManager = getChildFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                infoFragment = MatchInfoFragment.newInstance(match);
+                radiantFragment = MatchPlayeFragment.newInstance(match.getRadiantTeam(), true);
+                direFragment = MatchPlayeFragment.newInstance(match.getDireTeam(), false);
+                transaction.replace(R.id.team_info, infoFragment, "team_info_frag");
+                transaction.replace(R.id.radiant_info_frag, radiantFragment, "radiant_info_frag");
+                transaction.replace(R.id.dire_info_frag, direFragment, "dire_info_frag");
+                transaction.commit();
                 swipeContainer.setRefreshing(false);
             }
 

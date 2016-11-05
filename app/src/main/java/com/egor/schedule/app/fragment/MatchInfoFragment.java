@@ -24,17 +24,10 @@ import java.util.List;
 /**
  * Created by Egor on 02.07.2016.
  */
-//todo display winner
 //todo check live games
 public class MatchInfoFragment extends Fragment {
 
     private Match match;
-    View view;
-
-    public void setMatch(Match match) {
-        this.match = match;
-        view.invalidate();
-    }
 
 
     @Override
@@ -59,19 +52,6 @@ public class MatchInfoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.view = view;
-/*        TextView leagueName = (TextView) view.findViewById(R.id.league_name);
-        LeagueBean league = match.getLeague();
-        if (league != null) {
-            leagueName.setText(league.getName());
-        }*/
-
-        /*TextView seriesType = (TextView) view.findViewById(R.id.series_type);
-        String series = match.getSeriesType();
-        if (series != null) {
-            seriesType.setText(series);
-        }*/
-
 
         TeamBean radiantTeam = match.getRadiantTeam();
         if (radiantTeam != null) {
@@ -104,7 +84,7 @@ public class MatchInfoFragment extends Fragment {
             winner.setText("Winner: " + (match.getMatchStatus() == 1 ? match.getRadiantTeam().getName() : match.getDireTeam().getName()));
             netWorthAdv.setText("");
         } else {
-            winner.setText("");
+            winner.setVisibility(View.GONE);
             if (networthList != null && !networthList.isEmpty()) {
                 //todo display number
                 Integer networth = networthList.get(networthList.size() - 1);
@@ -115,7 +95,7 @@ public class MatchInfoFragment extends Fragment {
                     netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName()));
                 }
             } else {
-                netWorthAdv.setText("");
+                netWorthAdv.setVisibility(View.GONE);
 
             }
         }
