@@ -2,6 +2,8 @@ package com.egor.schedule.app.services;
 
 import com.egor.schedule.app.BuildConfig;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -12,7 +14,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class ServiceGenerator {
 
 
-    private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+    private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder().readTimeout(20, TimeUnit.SECONDS).connectTimeout(20, TimeUnit.SECONDS);
 
     private static GameService gameService = null;
 
