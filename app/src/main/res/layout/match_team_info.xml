@@ -137,6 +137,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_1"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -145,6 +146,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_2"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -153,6 +155,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_3"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -161,6 +164,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_4"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -168,6 +172,7 @@
                 android:id="@+id/radiant_pick_5"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:visibility="invisible"
                 android:src="@drawable/h_5"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
@@ -185,6 +190,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
+                android:visibility="invisible"
                 android:src="@drawable/h_10"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
@@ -195,6 +201,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_pick_5"
                 android:src="@drawable/h_9"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -204,6 +211,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_pick_4"
                 android:src="@drawable/h_8"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -213,6 +221,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_pick_3"
                 android:src="@drawable/h_7"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
 
@@ -222,6 +231,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_pick_2"
                 android:src="@drawable/h_6"
+                android:visibility="invisible"
                 app:civ_border_color="#079f05"
                 app:civ_border_width="2dp" />
         </RelativeLayout>
@@ -244,6 +254,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_11"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -252,6 +263,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_12"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -260,6 +272,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_13"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -268,6 +281,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_14"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -276,6 +290,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/h_15"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
         </LinearLayout>
@@ -292,6 +307,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
+                android:visibility="invisible"
                 android:src="@drawable/h_20"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
@@ -301,6 +317,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_ban_5"
+                android:visibility="invisible"
                 android:src="@drawable/h_19"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
@@ -311,6 +328,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_ban_4"
                 android:src="@drawable/h_18"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -320,6 +338,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_ban_3"
                 android:src="@drawable/h_17"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
 
@@ -329,6 +348,7 @@
                 android:layout_height="30dp"
                 android:layout_toStartOf="@id/dire_ban_2"
                 android:src="@drawable/h_16"
+                android:visibility="invisible"
                 app:civ_border_color="#ef2020"
                 app:civ_border_width="2dp" />
         </RelativeLayout>

@@ -54,16 +54,27 @@ public class ScheduleAdapter extends ArrayAdapter<ListAddapterItem> {
             ImageView radiantImage = (ImageView) rowView.findViewById(R.id.radiant_logo);
             ImageView direImage = (ImageView) rowView.findViewById(R.id.dire_logo);
 
-            Picasso.with(context).load(ImageUtils.getTeamUrl(game.getRadiant().getLogo())).resize(65, 65).centerCrop().into(radiantImage);
-            Picasso.with(context).load(ImageUtils.getTeamUrl(game.getDire().getLogo())).resize(65, 65).centerCrop().into(direImage);
+            Picasso.with(context).load(ImageUtils.getTeamUrl(game.getRadiant().getLogo())).into(radiantImage);
+            Picasso.with(context).load(ImageUtils.getTeamUrl(game.getDire().getLogo())).into(direImage);
 
             TextView leagueName = (TextView) rowView.findViewById(R.id.league_name);
             leagueName.setText(game.getLeague().getName());
 
             TextView radiantName = (TextView) rowView.findViewById(R.id.radiant_team_name);
-            radiantName.setText(game.getRadiant().getName());
+            String rname = game.getRadiant().getName();
+            if(rname.equals("")){
+                radiantName.setText("Unknown Team");
+            }else{
+                radiantName.setText(rname);
+            }
+
             TextView direName = (TextView) rowView.findViewById(R.id.dire_team_name);
-            direName.setText(game.getDire().getName());
+            String dname = game.getDire().getName();
+            if(dname.equals("")){
+                direName.setText("Unknown Team");
+            }else{
+                direName.setText(dname);
+            }
 
             TextView seriesType = (TextView) rowView.findViewById(R.id.series_type);
             seriesType.setText(game.getSeriesType());

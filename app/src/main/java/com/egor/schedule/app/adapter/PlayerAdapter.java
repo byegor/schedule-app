@@ -40,8 +40,11 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
 
         ImageView heroImage = (ImageView) rowView.findViewById(R.id.hero_log);
         Player player = players.get(position);
-        int drawableId = context.getResources().getIdentifier("h_" + player.getHero().getId(), "drawable", context.getPackageName());
-        Picasso.with(context).load(drawableId).into(heroImage);
+        int heroId = player.getHero().getId();
+        if(heroId!=0){
+            int drawableId = context.getResources().getIdentifier("h_" + heroId, "drawable", context.getPackageName());
+            Picasso.with(context).load(drawableId).into(heroImage);
+        }
 
         TextView playerName = (TextView) rowView.findViewById(R.id.player_name);
         playerName.setText(player.getName());

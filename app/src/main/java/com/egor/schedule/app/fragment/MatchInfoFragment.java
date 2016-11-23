@@ -56,7 +56,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean radiantTeam = match.getRadiantTeam();
         if (radiantTeam != null) {
             View radiantLogo = view.findViewById(R.id.radiant_logo);
-            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).resize(100, 100).centerCrop().into((ImageView) radiantLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).into((ImageView) radiantLogo);
             TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
             radiantName.setText(radiantTeam.getName());
 
@@ -67,7 +67,7 @@ public class MatchInfoFragment extends Fragment {
         TeamBean direTeam = match.getDireTeam();
         if (direTeam != null) {
             View direLogo = view.findViewById(R.id.dire_logo);
-            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).resize(100, 100).centerCrop().into((ImageView) direLogo);
+            Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).into((ImageView) direLogo);
             TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
             direName.setText(direTeam.getName());
         }
@@ -90,7 +90,7 @@ public class MatchInfoFragment extends Fragment {
                 Integer networth = networthList.get(networthList.size() - 1);
                 Resources res = getResources();
                 if (networth > 0) {
-                    netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getRadiantTeam().getName()));
+                    netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getRadiantTeam().getName() + " - " + networth));
                 } else {
                     netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName()));
                 }
@@ -105,7 +105,7 @@ public class MatchInfoFragment extends Fragment {
         initPicks(view, match.getRadianPicks(), "radiant_pick_");
         initPicks(view, match.getRadianBans(), "radiant_ban_");
         initPicks(view, match.getDirePicks(), "dire_pick_");
-        initPicks(view, match.getDireBans(), "radiant_ban_");
+        initPicks(view, match.getDireBans(), "dire_ban_");
     }
 
     private void initPicks(View view, List<HeroBean> heroes, String prefix) {
@@ -115,6 +115,7 @@ public class MatchInfoFragment extends Fragment {
                 HeroBean hero = heroes.get(i);
                 int drawableId = getResources().getIdentifier("h_" + hero.getId(), "drawable", getParentFragment().getActivity().getPackageName());
                 pick.setImageResource(drawableId);
+                pick.setVisibility(View.VISIBLE);
             }
         }
     }
