@@ -50,7 +50,7 @@ public class MatchWrapperFragment extends Fragment {
         if (match != null) {
             swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeMatchContainer);
 
-            if(match.getMatchStatus() == 1){
+            if(match.getMatchStatus() == 0){
                 swipeContainer.setEnabled(true);
                 swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override

@@ -85,9 +85,9 @@ public class MatchInfoFragment extends Fragment {
             netWorthAdv.setText("");
         } else {
             winner.setVisibility(View.GONE);
-            if (networthList != null && !networthList.isEmpty()) {
-                //todo display number
-                Integer networth = networthList.get(networthList.size() - 1);
+            if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:0")) {
+
+                Integer networth = networthList.get(0);
                 Resources res = getResources();
                 if (networth > 0) {
                     netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getRadiantTeam().getName() + " - " + networth));
