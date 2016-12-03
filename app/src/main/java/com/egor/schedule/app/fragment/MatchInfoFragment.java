@@ -85,7 +85,7 @@ public class MatchInfoFragment extends Fragment {
             netWorthAdv.setText("");
         } else {
             winner.setVisibility(View.GONE);
-            if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:0")) {
+            if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
 
                 Integer networth = networthList.get(0);
                 Resources res = getResources();
