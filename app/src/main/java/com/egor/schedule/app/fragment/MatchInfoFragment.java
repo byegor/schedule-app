@@ -86,13 +86,12 @@ public class MatchInfoFragment extends Fragment {
         } else {
             winner.setVisibility(View.GONE);
             if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
-
                 Integer networth = networthList.get(0);
                 Resources res = getResources();
                 if (networth > 0) {
                     netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getRadiantTeam().getName() + " - " + networth));
                 } else {
-                    netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName()));
+                    netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName()+ " - " + (-networth)));
                 }
             } else {
                 netWorthAdv.setVisibility(View.GONE);

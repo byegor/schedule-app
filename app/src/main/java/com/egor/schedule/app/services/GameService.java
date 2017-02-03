@@ -19,6 +19,7 @@ import java.util.TreeMap;
 public interface GameService {
 
     @GET("/games/current")
+//    @GET("/debug/games/1")
     Call<Map<String, List<GameBean>>> currentGames();
 
     @GET("/games/game/{gameId}")
