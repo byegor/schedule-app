@@ -24,14 +24,14 @@ import java.util.List;
 /**
  * Created by Egor on 02.07.2016.
  */
-//// TODO: 15.03.2017  fix hero - remove from app and get it by name from image service
-public class MatchPlayeFragment extends Fragment {
+// todo improve layout for players
+public class MatchPlayerFragment extends Fragment {
 
     private TeamBean team;
     private Boolean radiant;
 
-    public static MatchPlayeFragment newInstance(TeamBean teamBean, boolean radiant) {
-        MatchPlayeFragment fragment = new MatchPlayeFragment();
+    public static MatchPlayerFragment newInstance(TeamBean teamBean, boolean radiant) {
+        MatchPlayerFragment fragment = new MatchPlayerFragment();
         Bundle args = new Bundle();
         args.putSerializable("team", teamBean);
         args.putSerializable("radiant", radiant);
@@ -74,8 +74,7 @@ public class MatchPlayeFragment extends Fragment {
         ImageView heroImage = (ImageView) rowView.findViewById(R.id.hero_log);
         int heroId = player.getHero().getId();
         if (heroId != 0) {
-            int drawableId = getContext().getResources().getIdentifier("h_" + heroId, "drawable", getContext().getPackageName());
-            Picasso.with(getContext()).load(drawableId).into(heroImage);
+            ImageUtils.loadHeroImage(getContext(), player.getHero(), heroImage);
         }
 
         TextView playerName = (TextView) rowView.findViewById(R.id.player_name);
