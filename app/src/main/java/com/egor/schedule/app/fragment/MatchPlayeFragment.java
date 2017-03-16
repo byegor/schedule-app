@@ -8,24 +8,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.eb.schedule.shared.bean.Item;
 import com.eb.schedule.shared.bean.Player;
 import com.eb.schedule.shared.bean.TeamBean;
 import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.PlayerAdapter;
+import com.egor.schedule.app.utils.ImageUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 /**
  * Created by Egor on 02.07.2016.
  */
+//// TODO: 15.03.2017  fix hero - remove from app and get it by name from image service
 public class MatchPlayeFragment extends Fragment {
 
     private TeamBean team;
     private Boolean radiant;
-    PlayerAdapter adapter;
 
     public static MatchPlayeFragment newInstance(TeamBean teamBean, boolean radiant) {
         MatchPlayeFragment fragment = new MatchPlayeFragment();
@@ -42,8 +45,6 @@ public class MatchPlayeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.team = (TeamBean) getArguments().getSerializable("team");
         this.radiant = (Boolean) getArguments().getSerializable("radiant");
-        adapter = new PlayerAdapter(this.getActivity());
-        adapter.addAll(team.getPlayers());
     }
 
     @Override
@@ -61,8 +62,43 @@ public class MatchPlayeFragment extends Fragment {
 
         TextView teamName = (TextView) view.findViewById(R.id.team_name);
         teamName.setText(team.getName());
-        final ListView listView = (ListView) view.findViewById(R.id.list);
-        listView.setAdapter(adapter);
+        final LinearLayout players = (LinearLayout) view.findViewById(R.id.players);
+        for (Player player : team.getPlayers()) {
+            players.addView(renderPlayer(player));
+        }
+
+    }
+
+    private View renderPlayer(Player player) {
+        View rowView = getActivity().getLayoutInflater().inflate(R.layout.player, null);
+        ImageView heroImage = (ImageView) rowView.findViewById(R.id.hero_log);
+        int heroId = player.getHero().getId();
+        if (heroId != 0) {
+            int drawableId = getContext().getResources().getIdentifier("h_" + heroId, "drawable", getContext().getPackageName());
+            Picasso.with(getContext()).load(drawableId).into(heroImage);
+        }
+
+        TextView playerName = (TextView) rowView.findViewById(R.id.player_name);
+        playerName.setText(player.getName());
+
+        TextView level = (TextView) rowView.findViewById(R.id.level_status);
+        level.setText("Lvl " + player.getLevel() + ": " + player.getHero().getName());
+
+        TextView kda = (TextView) rowView.findViewById(R.id.kda);
+        kda.setText("K/D/A: " + player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+
+        List<Item> items = player.getItems();
+        for (int i = 0; i < items.size(); i++) {
+            ImageView itemImage = (ImageView) rowView.findViewById(getContext().getResources().getIdentifier("item_" + (i + 1), "id", getContext().getPackageName()));
+            Item item = items.get(i);
+            if (item.getName().contains("recipe")) {
+                Picasso.with(getContext()).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
+            } else {
+                Picasso.with(getContext()).load(ImageUtils.getItemUrl(item.getName())).resize(30, 30).centerCrop().into(itemImage);
+            }
+        }
+
+        return rowView;
     }
 
 
