@@ -21,6 +21,8 @@ import java.util.List;
 /**
  * Created by Егор on 06.02.2016.
  */
+//// TODO: 15.03.2017  fix hero - remove from app and get it by name from image service
+
 public class PlayerAdapter extends ArrayAdapter<Player> {
 
     private Activity context;
