@@ -10,19 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
-import com.eb.schedule.shared.bean.GameBean;
 import com.eb.schedule.shared.bean.Match;
 import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.schedule.ListAddapterItem;
-import com.egor.schedule.app.adapter.schedule.ListHeader;
-import com.egor.schedule.app.adapter.schedule.ListItem;
 import com.egor.schedule.app.services.ServiceGenerator;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,8 +27,8 @@ public class MatchWrapperFragment extends Fragment {
 
     private SwipeRefreshLayout swipeContainer;
     private MatchInfoFragment infoFragment;
-    private MatchPlayeFragment radiantFragment;
-    private MatchPlayeFragment direFragment;
+    private MatchPlayerFragment radiantFragment;
+    private MatchPlayerFragment direFragment;
 
 
     @Override
@@ -67,8 +58,8 @@ public class MatchWrapperFragment extends Fragment {
             FragmentManager fragmentManager = getChildFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             infoFragment = MatchInfoFragment.newInstance(match);
-            radiantFragment = MatchPlayeFragment.newInstance(match.getRadiantTeam(), true);
-            direFragment = MatchPlayeFragment.newInstance(match.getDireTeam(), false);
+            radiantFragment = MatchPlayerFragment.newInstance(match.getRadiantTeam(), true);
+            direFragment = MatchPlayerFragment.newInstance(match.getDireTeam(), false);
             transaction.add(R.id.team_info, infoFragment, "team_info_frag");
             transaction.add(R.id.radiant_info_frag, radiantFragment, "radiant_info_frag");
             transaction.add(R.id.dire_info_frag, direFragment, "dire_info_frag");
@@ -97,8 +88,8 @@ public class MatchWrapperFragment extends Fragment {
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 infoFragment = MatchInfoFragment.newInstance(match);
-                radiantFragment = MatchPlayeFragment.newInstance(match.getRadiantTeam(), true);
-                direFragment = MatchPlayeFragment.newInstance(match.getDireTeam(), false);
+                radiantFragment = MatchPlayerFragment.newInstance(match.getRadiantTeam(), true);
+                direFragment = MatchPlayerFragment.newInstance(match.getDireTeam(), false);
                 transaction.replace(R.id.team_info, infoFragment, "team_info_frag");
                 transaction.replace(R.id.radiant_info_frag, radiantFragment, "radiant_info_frag");
                 transaction.replace(R.id.dire_info_frag, direFragment, "dire_info_frag");
