@@ -1,4 +1,4 @@
-package com.egor.schedule.app.adapter;
+package com.egor.schedule.app.adapter.schedule;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
 import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.schedule.ListAddapterItem;
+import com.egor.schedule.app.adapter.schedule.item.ScheduleItem;
 import com.egor.schedule.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
@@ -25,30 +25,30 @@ import java.util.List;
 /**
  * Created by Егор on 06.02.2016.
  */
-public class ScheduleAdapter extends ArrayAdapter<ListAddapterItem> {
+public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
 
     private Activity context;
-    private List<ListAddapterItem> games;
+    private List<ScheduleItem> games;
     private DateFormat timeFormatter;
 
     public ScheduleAdapter(Activity context) {
         super(context, R.layout.schedule_list_item);
         this.context = context;
-        this.games = new ArrayList<ListAddapterItem>();
+        this.games = new ArrayList<ScheduleItem>();
         this.timeFormatter = android.text.format.DateFormat.getTimeFormat(context);
     }
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        ListAddapterItem item = games.get(position);
+        ScheduleItem item = games.get(position);
         if (item.isHeader()) {
             View rowView = inflater.inflate(R.layout.schedule_list_header, null, true);
             TextView date = (TextView) rowView.findViewById(R.id.date);
-            date.setText((String) item.getBody());
+            date.setText((String) item.getItem());
             return rowView;
         } else {
             View rowView = inflater.inflate(R.layout.schedule_list_item, null, true);
-            GameBean game = (GameBean) item.getBody();
+            GameBean game = (GameBean) item.getItem();
 
             TextView score = (TextView) rowView.findViewById(R.id.score);
             ImageView radiantImage = (ImageView) rowView.findViewById(R.id.radiant_logo);
@@ -100,7 +100,7 @@ public class ScheduleAdapter extends ArrayAdapter<ListAddapterItem> {
 
     @Override
 
-    public void addAll(Collection<? extends ListAddapterItem> collection) {
+    public void addAll(Collection<? extends ScheduleItem> collection) {
         if (collection != null) {
             games.addAll(collection);
             super.addAll(collection);

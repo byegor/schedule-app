@@ -1,4 +1,4 @@
-package com.egor.schedule.app.adapter;
+package com.egor.schedule.app.adapter.match;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,7 +13,10 @@ import java.util.List;
 
 public class MatchFragmentAdapter extends FragmentStatePagerAdapter {
 
+
+    private int gamesCount;
     private final List<Fragment> matchesList = new ArrayList<Fragment>();
+
 
     public MatchFragmentAdapter(FragmentManager manager) {
         super(manager);
@@ -26,12 +29,18 @@ public class MatchFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return matchesList.size();
+        return gamesCount;
+    }
+
+
+    public void setGamesCount(int gamesCount) {
+        this.gamesCount = gamesCount;
     }
 
     public void addFragment(Fragment fragment) {
         matchesList.add(fragment);
     }
+
 
     @Override
     public CharSequence getPageTitle(int position) {

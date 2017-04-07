@@ -1,4 +1,4 @@
-package com.egor.schedule.app;
+package com.egor.schedule.app.schedule;
 
 
 import android.app.Activity;
@@ -12,10 +12,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
-import com.egor.schedule.app.adapter.ScheduleAdapter;
-import com.egor.schedule.app.adapter.schedule.ListAddapterItem;
-import com.egor.schedule.app.adapter.schedule.ListHeader;
-import com.egor.schedule.app.adapter.schedule.ListItem;
+import com.egor.schedule.app.match.MatchTabActivity;
+import com.egor.schedule.app.R;
+import com.egor.schedule.app.adapter.schedule.ScheduleAdapter;
+import com.egor.schedule.app.adapter.schedule.item.ScheduleItem;
+import com.egor.schedule.app.adapter.schedule.item.ScheduleItemHeader;
+import com.egor.schedule.app.adapter.schedule.item.ScheduleItemGame;
 import com.egor.schedule.app.services.ServiceGenerator;
 
 import retrofit2.Call;
@@ -46,10 +48,11 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (!adapter.isEmpty()) {
-                    ListAddapterItem item = adapter.getItem(position);
+                    ScheduleItem item = adapter.getItem(position);
                     if(!item.isHeader()) {
                         Intent launchActivity = new Intent(MainActivity.this, MatchTabActivity.class);
-                        launchActivity.putExtra("gameId", ((GameBean)item.getBody()).getId());
+                        launchActivity.putExtra("gameId", ((GameBean)item.getItem()).getId());
+                        launchActivity.putExtra("gamesCount", ((GameBean)item.getItem()).getNumberOfGames());
                         startActivity(launchActivity);
                     }
                 }
@@ -76,12 +79,12 @@ public class MainActivity extends Activity {
             @Override
             public void onResponse(Call<Map<String, List<GameBean>>> call, Response<Map<String, List<GameBean>>> response) {
                 adapter.clear();
-                List<ListAddapterItem> listEntries = new ArrayList<ListAddapterItem>();
+                List<ScheduleItem> listEntries = new ArrayList<ScheduleItem>();
                 Map<String, List<GameBean>> body = response.body();
                 for (Map.Entry<String, List<GameBean>> entry : body.entrySet()) {
-                    listEntries.add(new ListHeader(entry.getKey()));
+                    listEntries.add(new ScheduleItemHeader(entry.getKey()));
                     for (GameBean gameBean : entry.getValue()) {
-                        listEntries.add(new ListItem(gameBean));
+                        listEntries.add(new ScheduleItemGame(gameBean));
                     }
                 }
 

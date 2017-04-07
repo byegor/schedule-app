@@ -1,4 +1,4 @@
-package com.egor.schedule.app.fragment;
+package com.egor.schedule.app.match;
 
 
 import android.graphics.Color;

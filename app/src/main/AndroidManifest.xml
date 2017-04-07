@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/dota_pulse_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MatchTabActivity" />
+        <activity android:name=".schedule.MainActivity" />
+        <activity android:name=".match.MatchTabActivity" />
     </application>
 
 </manifest>

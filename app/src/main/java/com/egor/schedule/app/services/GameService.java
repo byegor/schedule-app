@@ -23,7 +23,7 @@ public interface GameService {
     Call<Map<String, List<GameBean>>> currentGames();
 
     @GET("/games/game/{gameId}")
-    Call<List<Match>> getMatchesByGameId(@Path("gameId")int gameId);
+    Call<Map<String, String>> getMatchesByGameId(@Path("gameId")int gameId);
 
     @GET("/games/match/{matchId}")
     Call<Match> getMatchById(@Path("matchId")long matchId);
