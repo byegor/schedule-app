@@ -26,7 +26,7 @@ public class AwaitingDataObserver {
     }
 
     public static void notify(int id, Map<Integer, Match> data) {
-        List<AwaitingData<Match>> awaitingDatas = listeners.get(id);
+        List<AwaitingData<Match>> awaitingDatas = listeners.remove(id);
         if (awaitingDatas != null) {
             for (AwaitingData<Match> listener : awaitingDatas) {
                 Match match = data.remove(listener.getDataIdentifier());

@@ -12,13 +12,11 @@ import com.eb.schedule.shared.bean.Match;
 import com.egor.schedule.app.R;
 import com.egor.schedule.app.adapter.match.MatchFragmentAdapter;
 import com.egor.schedule.app.data.AwaitingDataObserver;
-import com.egor.schedule.app.match.MatchWrapperFragment;
 import com.egor.schedule.app.services.ServiceGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
