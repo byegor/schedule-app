@@ -1,6 +1,6 @@
-package com.egor.schedule.app.services;
+package com.egor.pulse.app.services;
 
-import com.egor.schedule.app.BuildConfig;
+import com.egor.pulse.app.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 

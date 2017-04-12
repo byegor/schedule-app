@@ -1,17 +1,14 @@
-package com.egor.schedule.app.services;
+package com.egor.pulse.app.services;
 
 import com.eb.schedule.shared.bean.GameBean;
 import com.eb.schedule.shared.bean.Match;
 
+import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
-
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Egor on 26.05.2016.

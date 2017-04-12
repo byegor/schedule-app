@@ -1,4 +1,4 @@
-package com.egor.schedule.app;
+package com.egor.pulse.app;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

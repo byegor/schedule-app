@@ -1,7 +1,6 @@
-package com.egor.schedule.app.adapter.schedule.item;
+package com.egor.pulse.app.adapter.schedule.item;
 
 import com.eb.schedule.shared.bean.GameBean;
-import com.egor.schedule.app.adapter.schedule.item.ScheduleItem;
 
 /**
  * Created by Егор on 12.10.2016.

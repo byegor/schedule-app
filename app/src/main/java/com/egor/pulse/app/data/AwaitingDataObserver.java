@@ -1,4 +1,4 @@
-package com.egor.schedule.app.data;
+package com.egor.pulse.app.data;
 
 import com.eb.schedule.shared.bean.Match;
 

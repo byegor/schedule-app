@@ -1,7 +1,6 @@
-package com.egor.schedule.app.match;
+package com.egor.pulse.app.match;
 
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 import com.eb.schedule.shared.bean.HeroBean;
 import com.eb.schedule.shared.bean.Match;
 import com.eb.schedule.shared.bean.TeamBean;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.utils.ImageUtils;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -77,25 +76,21 @@ public class MatchInfoFragment extends Fragment {
                 duration.setText(match.getDuration());
             }
 
-            TextView netWorthAdv = (TextView) view.findViewById(R.id.net_worth_adv);
+
             TextView winner = (TextView) view.findViewById(R.id.team_victory);
             List<Integer> networthList = match.getNetworth();
             if (match.getMatchStatus() != 0) {
                 winner.setText("Winner: " + (match.getMatchStatus() == 1 ? match.getRadiantTeam().getName() : match.getDireTeam().getName()));
-                netWorthAdv.setText("");
             } else {
-                winner.setVisibility(View.GONE);
                 if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
                     Integer networth = networthList.get(0);
-                    Resources res = getResources();
                     if (networth > 0) {
-                        netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getRadiantTeam().getName() + " - " + networth));
+                        winner.setText("Net Worth Advantage: " + match.getRadiantTeam().getName() + " - " + networth);
                     } else {
-                        netWorthAdv.setText(String.format(res.getString(R.string.net_worth_adv), match.getDireTeam().getName() + " - " + (-networth)));
+                        winner.setText("Net Worth Advantage: " + match.getDireTeam().getName() + " - " + (-networth));
                     }
                 } else {
-                    netWorthAdv.setVisibility(View.GONE);
-
+                    winner.setText("Pick/Ban stage");
                 }
             }
 

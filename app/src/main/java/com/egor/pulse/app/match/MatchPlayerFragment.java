@@ -1,4 +1,4 @@
-package com.egor.schedule.app.match;
+package com.egor.pulse.app.match;
 
 
 import android.graphics.Color;
@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.eb.schedule.shared.bean.Item;
 import com.eb.schedule.shared.bean.Player;
 import com.eb.schedule.shared.bean.TeamBean;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.utils.ImageUtils;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

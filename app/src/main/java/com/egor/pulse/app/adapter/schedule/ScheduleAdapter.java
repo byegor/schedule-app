@@ -1,4 +1,4 @@
-package com.egor.schedule.app.adapter.schedule;
+package com.egor.pulse.app.adapter.schedule;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.schedule.item.ScheduleItem;
-import com.egor.schedule.app.utils.ImageUtils;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.adapter.schedule.item.ScheduleItem;
+import com.egor.pulse.app.utils.ImageUtils;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;

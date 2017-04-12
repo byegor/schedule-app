@@ -1,4 +1,4 @@
-package com.egor.schedule.app.match;
+package com.egor.pulse.app.match;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eb.schedule.shared.bean.Match;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.data.AwaitingData;
-import com.egor.schedule.app.services.ServiceGenerator;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.data.AwaitingData;
+import com.egor.pulse.app.services.ServiceGenerator;
 
 import retrofit2.Call;
 import retrofit2.Callback;

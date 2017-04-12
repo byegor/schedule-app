@@ -1,10 +1,10 @@
-package com.egor.schedule.app.utils;
+package com.egor.pulse.app.utils;
 
 import android.content.Context;
 import android.widget.ImageView;
 
 import com.eb.schedule.shared.bean.HeroBean;
-import com.egor.schedule.app.BuildConfig;
+import com.egor.pulse.app.BuildConfig;
 import com.squareup.picasso.Picasso;
 
 /**

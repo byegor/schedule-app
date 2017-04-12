@@ -1,4 +1,4 @@
-package com.egor.schedule.app.data;
+package com.egor.pulse.app.data;
 
 /**
  * Created by Егор on 25.03.2017.

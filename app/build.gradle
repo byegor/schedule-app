@@ -13,17 +13,26 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        def appFile = rootProject.file("app.properties")
+        def appProperties = new Properties()
+        appProperties.load(new FileInputStream(appFile))
+        release {
+            keyAlias appProperties['keyAlias']
+            keyPassword appProperties['keyPassword']
+            storeFile file(appProperties['storeFile'])
+            storePassword appProperties['storePassword']
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
-
     defaultConfig {
-        applicationId "com.egor.schedule.app"
+        applicationId 'com.egor.pulse.app'
         minSdkVersion 21
         targetSdkVersion 24
         versionCode 2
         versionName "2.0"
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
@@ -32,6 +41,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     productFlavors {
@@ -40,7 +50,6 @@ android {
             buildConfigField 'String', 'IMAGE_HOST', '"http://192.168.1.26:8085"'
             buildConfigField 'String', 'IMAGE_HOST', '"http://192.168.1.26:8085"'
         }
-
         prod {
             buildConfigField 'String', 'REST_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com/"'
             buildConfigField 'String', 'IMAGE_HOST', '"http://ec2-52-43-235-181.us-west-2.compute.amazonaws.com/"'
@@ -61,13 +70,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:design:24.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:2.0.0'
-
     compile 'com.eb.schedule:shared:0.2'
 }

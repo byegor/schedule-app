@@ -1,4 +1,4 @@
-package com.egor.schedule.app.match;
+package com.egor.pulse.app.match;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.Match;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.match.MatchFragmentAdapter;
-import com.egor.schedule.app.data.AwaitingDataObserver;
-import com.egor.schedule.app.services.ServiceGenerator;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.adapter.match.MatchFragmentAdapter;
+import com.egor.pulse.app.data.AwaitingDataObserver;
+import com.egor.pulse.app.services.ServiceGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;

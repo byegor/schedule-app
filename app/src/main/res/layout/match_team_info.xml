@@ -24,6 +24,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="start"
+                android:src="@drawable/unknown"
                 android:scaleType="fitXY"
                  />
 
@@ -84,6 +85,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="end"
+                android:src="@drawable/unknown"
                 android:scaleType="fitXY"/>
 
             <TextView
@@ -108,15 +110,6 @@
         android:paddingBottom="15dp"
         android:text="Winner: Unknown"
         android:textSize="14sp" />
-    <TextView
-        android:id="@+id/net_worth_adv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:paddingBottom="10dp"
-        android:text="@string/net_worth_adv"
-        android:textSize="15sp" />
 
     <!--Radiand And Dire Picks-->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

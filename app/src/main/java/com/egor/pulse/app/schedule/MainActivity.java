@@ -1,4 +1,4 @@
-package com.egor.schedule.app.schedule;
+package com.egor.pulse.app.schedule;
 
 
 import android.app.Activity;
@@ -12,21 +12,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.eb.schedule.shared.bean.GameBean;
-import com.egor.schedule.app.match.MatchTabActivity;
-import com.egor.schedule.app.R;
-import com.egor.schedule.app.adapter.schedule.ScheduleAdapter;
-import com.egor.schedule.app.adapter.schedule.item.ScheduleItem;
-import com.egor.schedule.app.adapter.schedule.item.ScheduleItemHeader;
-import com.egor.schedule.app.adapter.schedule.item.ScheduleItemGame;
-import com.egor.schedule.app.services.ServiceGenerator;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.egor.pulse.app.R;
+import com.egor.pulse.app.adapter.schedule.ScheduleAdapter;
+import com.egor.pulse.app.adapter.schedule.item.ScheduleItem;
+import com.egor.pulse.app.adapter.schedule.item.ScheduleItemGame;
+import com.egor.pulse.app.adapter.schedule.item.ScheduleItemHeader;
+import com.egor.pulse.app.match.MatchTabActivity;
+import com.egor.pulse.app.services.ServiceGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 //todo what if new patch bring new hero so i need to download hero image, the same for items
 //todo show view and then load info

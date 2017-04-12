@@ -1,10 +1,10 @@
-package com.egor.schedule.app;
+package com.egor.pulse.app;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.egor.schedule.app.schedule.MainActivity;
+import com.egor.pulse.app.schedule.MainActivity;
 
 /**
  * Created by Егор on 06.02.2017.

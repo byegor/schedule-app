@@ -1,4 +1,4 @@
-package com.egor.schedule.app.adapter.match;
+package com.egor.pulse.app.adapter.match;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
