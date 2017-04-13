@@ -22,12 +22,12 @@
             <FrameLayout
                 android:id="@+id/radiant_info_frag"
                 android:layout_width="match_parent"
-                android:layout_height="535dp" />
+                android:layout_height="wrap_content" />
 
             <FrameLayout
                 android:id="@+id/dire_info_frag"
                 android:layout_width="match_parent"
-                android:layout_height="535dp" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
