@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.eb.schedule.shared.bean.Match;
 import com.egor.pulse.app.R;
 import com.egor.pulse.app.adapter.match.MatchFragmentAdapter;
-import com.egor.pulse.app.data.AwaitingDataObserver;
+import com.egor.pulse.app.data.MatchDataStorage;
 import com.egor.pulse.app.services.ServiceGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -51,7 +51,6 @@ public class MatchTabActivity extends FragmentActivity {
             adapter.setGamesCount(gamesCount);
             for (int i = 0; i < gamesCount; i++) {
                 MatchWrapperFragment fragment = MatchWrapperFragment.newInstance(gameId, i + 1);
-                AwaitingDataObserver.addListener(gameId, fragment);
                 adapter.addFragment(fragment);
             }
             viewPager.setAdapter(adapter);
@@ -85,7 +84,7 @@ public class MatchTabActivity extends FragmentActivity {
                                 Log.e("API", "Couldn't parse match : " + entry.getValue(), e);
                             }
                         }
-                        AwaitingDataObserver.notify(gameId, mathesByGameNumber);
+                        MatchDataStorage.setData(gameId, mathesByGameNumber);
                     }
                 }
             }

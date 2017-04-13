@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 
 import com.eb.schedule.shared.bean.Match;
 import com.egor.pulse.app.R;
-import com.egor.pulse.app.data.AwaitingData;
 import com.egor.pulse.app.services.ServiceGenerator;
+import com.egor.pulse.app.task.MatchTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,9 +24,9 @@ import retrofit2.Response;
  * Created by Egor on 22.06.2016.
  */
 //todo wrap all in try catch
-public class MatchWrapperFragment extends Fragment implements AwaitingData<Match> {
+public class MatchWrapperFragment extends Fragment{
 
-    private SwipeRefreshLayout swipeContainer;
+    public SwipeRefreshLayout swipeContainer;
     private MatchInfoFragment infoFragment;
     private MatchPlayerFragment radiantFragment;
     private MatchPlayerFragment direFragment;
@@ -34,20 +34,6 @@ public class MatchWrapperFragment extends Fragment implements AwaitingData<Match
     private int gameId;
     private int gameNumber;
     private int matchId = -1;
-
-    @Override
-    public int getDataIdentifier() {
-        return gameNumber;
-    }
-
-    @Override
-    public void dataArrived(Match match) {
-        if (match != null) {
-            swipeContainer.setEnabled(match.getMatchStatus() == 0);
-            refresh(match);
-        }
-
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -66,6 +52,7 @@ public class MatchWrapperFragment extends Fragment implements AwaitingData<Match
         infoFragment = MatchInfoFragment.newInstance(null);
         transaction.add(R.id.team_info, infoFragment, "team_info_frag");
         transaction.commit();
+        new MatchTask(this).execute(gameId, gameNumber);
     }
 
     public static MatchWrapperFragment newInstance(int gameId, int gameNumber) {
@@ -98,7 +85,7 @@ public class MatchWrapperFragment extends Fragment implements AwaitingData<Match
         };
     }
 
-    private void refresh(Match match) {
+    public void refresh(Match match) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         infoFragment = MatchInfoFragment.newInstance(match);
@@ -109,5 +96,11 @@ public class MatchWrapperFragment extends Fragment implements AwaitingData<Match
         transaction.replace(R.id.dire_info_frag, direFragment, "dire_info_frag");
         transaction.commit();
         swipeContainer.setRefreshing(false);
+        swipeContainer.setEnabled(match.getMatchStatus() == 0);
+    }
+
+    public void failedToGetData(){
+        swipeContainer.setRefreshing(false);
+        swipeContainer.setEnabled(true);
     }
 }
