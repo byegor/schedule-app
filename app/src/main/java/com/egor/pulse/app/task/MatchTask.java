@@ -1,6 +1,7 @@
 package com.egor.pulse.app.task;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.eb.schedule.shared.bean.Match;
 import com.egor.pulse.app.data.MatchDataStorage;
@@ -20,7 +21,7 @@ public class MatchTask extends AsyncTask<Integer, Void, Match> {
 
     @Override
     protected Match doInBackground(Integer... ids) {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             Match data = MatchDataStorage.getData(ids[0], ids[1]);
             if(data != null){
                 return data;
@@ -31,7 +32,7 @@ public class MatchTask extends AsyncTask<Integer, Void, Match> {
                 }
             }
         }
-        //todo log
+        Log.e("API", "Coudln't retrieve data for game Id: " + ids[0] + " and gameNumber: " + ids[1]);
         return null;
     }
 

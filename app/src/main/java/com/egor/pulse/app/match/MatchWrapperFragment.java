@@ -1,5 +1,6 @@
 package com.egor.pulse.app.match;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ import retrofit2.Response;
  * Created by Egor on 22.06.2016.
  */
 //todo wrap all in try catch
-public class MatchWrapperFragment extends Fragment{
+public class MatchWrapperFragment extends Fragment {
 
     public SwipeRefreshLayout swipeContainer;
     private MatchInfoFragment infoFragment;
@@ -52,7 +53,7 @@ public class MatchWrapperFragment extends Fragment{
         infoFragment = MatchInfoFragment.newInstance(null);
         transaction.add(R.id.team_info, infoFragment, "team_info_frag");
         transaction.commit();
-        new MatchTask(this).execute(gameId, gameNumber);
+        new MatchTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, gameId, gameNumber);
     }
 
     public static MatchWrapperFragment newInstance(int gameId, int gameNumber) {
@@ -99,7 +100,7 @@ public class MatchWrapperFragment extends Fragment{
         swipeContainer.setEnabled(match.getMatchStatus() == 0);
     }
 
-    public void failedToGetData(){
+    public void failedToGetData() {
         swipeContainer.setRefreshing(false);
         swipeContainer.setEnabled(true);
     }
