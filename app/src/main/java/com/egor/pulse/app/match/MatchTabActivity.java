@@ -16,8 +16,8 @@ import com.egor.pulse.app.services.ServiceGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +50,7 @@ public class MatchTabActivity extends FragmentActivity {
             final int gamesCount = extras.getInt("gamesCount");
             adapter.setGamesCount(gamesCount);
             for (int i = 0; i < gamesCount; i++) {
-                MatchWrapperFragment fragment = MatchWrapperFragment.newInstance(gameId, i + 1);
+                MatchWrapperFragment fragment = MatchWrapperFragment.newInstance(gameId, i);
                 adapter.addFragment(fragment);
             }
             viewPager.setAdapter(adapter);
@@ -66,31 +66,30 @@ public class MatchTabActivity extends FragmentActivity {
     }
 
     private void getMatches(final Activity activity, final int gameId) {
-        Call<Map<String, String>> games = ServiceGenerator.getGameService().getMatchesByGameId(gameId);
-        games.enqueue(new Callback<Map<String, String>>() {
+        Call<List<String>> games = ServiceGenerator.getGameService().getMatchesByGameId(gameId);
+        games.enqueue(new Callback<List<String>>() {
             @Override
-            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
-                Map<String, String> matches = response.body();
-                if (matches != null) {
-                    if (matches.isEmpty()) {
-                        Toast.makeText(activity, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
-                    } else {
-                        HashMap<Integer, Match> mathesByGameNumber = new HashMap<Integer, Match>();
-                        for (Map.Entry<String, String> entry : matches.entrySet()) {
-                            try {
-                                Match match = mapper.readValue(entry.getValue(), Match.class);
-                                mathesByGameNumber.put(Integer.parseInt(entry.getKey()), match);
-                            } catch (IOException e) {
-                                Log.e("API", "Couldn't parse match : " + entry.getValue(), e);
-                            }
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                List<String> matches = response.body();
+                if (matches != null && !matches.isEmpty()) {
+                    List<Match> parsedMatches = new ArrayList<Match>(matches.size());
+                    for (String match : matches) {
+                        try {
+                            parsedMatches.add(mapper.readValue(match, Match.class));
+                        } catch (IOException e) {
+                            Log.e("API", "couldn't parse match by gameId: " + gameId + ", " + match, e);
+                            parsedMatches.add(null);
                         }
-                        MatchDataStorage.setData(gameId, mathesByGameNumber);
                     }
+                    MatchDataStorage.setData(gameId, parsedMatches);
+                } else {
+                    Toast.makeText(activity, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<Map<String, String>> call, Throwable t) {
+            public void onFailure(Call<List<String>> call, Throwable t) {
                 Toast.makeText(activity, "Couldn't get match info. Try refresh", Toast.LENGTH_LONG).show();
                 Log.e("API", "couldn't get matches by gameId: " + gameId, t);
             }

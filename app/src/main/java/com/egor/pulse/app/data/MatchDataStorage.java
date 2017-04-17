@@ -2,7 +2,7 @@ package com.egor.pulse.app.data;
 
 import com.eb.schedule.shared.bean.Match;
 
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -12,15 +12,15 @@ import java.util.concurrent.ConcurrentMap;
 
 public class MatchDataStorage {
 
-    private static volatile ConcurrentMap<Integer, Map<Integer, Match>> storedData = new ConcurrentHashMap<Integer, Map<Integer, Match>>();
+    private static volatile ConcurrentMap<Integer, List<Match>> storedData = new ConcurrentHashMap<Integer, List<Match>>();
 
-    public static void setData(int id, Map<Integer, Match> data) {
+    public static void setData(int id, List<Match> data) {
         storedData.put(id, data);
     }
 
     public static Match getData(int gameId, int gameNumber){
-        Map<Integer, Match> data = storedData.get(gameId);
-        if(data != null){
+        List<Match> data = storedData.get(gameId);
+        if(data != null && !data.isEmpty()){
             return data.get(gameNumber);
         }else{
             return null;
