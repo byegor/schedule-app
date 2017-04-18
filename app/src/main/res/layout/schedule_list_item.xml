@@ -22,7 +22,7 @@
     <RelativeLayout
         android:id="@+id/schedule_panel"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
         android:visibility="visible">
 
         <TextView
@@ -37,7 +37,7 @@
         <LinearLayout
             android:id="@+id/home__team_info_panel"
             android:layout_width="100dp"
-            android:layout_height="85dp"
+            android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="12dp"
@@ -49,13 +49,26 @@
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
+                android:src="@drawable/unknown" />
+
+            <TextView
+                android:id="@+id/radiant_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingTop="2dp"
+                android:text="@string/radiant_name"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+
                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/away_team_info_panel"
             android:layout_toRightOf="@+id/home__team_info_panel"
@@ -86,7 +99,7 @@
         <LinearLayout
             android:id="@+id/away_team_info_panel"
             android:layout_width="100dp"
-            android:layout_height="85dp"
+            android:layout_height="100dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
@@ -98,36 +111,21 @@
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
+                android:src="@drawable/unknown" />
+
+            <TextView
+                android:id="@+id/dire_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingTop="2dp"
+                android:text="@string/dire_name"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+
                 />
         </LinearLayout>
-        <TextView
-            android:id="@+id/radiant_team_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="2dp"
-            android:text="@string/radiant_name"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:maxLines="1"
-            android:layout_alignBottom="@+id/home__team_info_panel"
-            android:layout_alignRight="@+id/home__team_info_panel"
-            />
-
-        <TextView
-            android:id="@+id/dire_team_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="2dp"
-            android:text="@string/dire_name"
-            android:maxLines="1"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:layout_alignBottom="@+id/away_team_info_panel"
-            android:layout_alignRight="@+id/away_team_info_panel"
-            android:layout_marginRight="12dp"
-            />
     </RelativeLayout>
 
 </LinearLayout>
