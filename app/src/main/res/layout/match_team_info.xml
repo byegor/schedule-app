@@ -24,6 +24,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="start"
+                android:layout_marginLeft="15dp"
                 android:src="@drawable/unknown"
                 android:scaleType="fitXY"
                  />
@@ -85,6 +86,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="end"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/unknown"
                 android:scaleType="fitXY"/>
 
