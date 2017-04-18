@@ -15,7 +15,7 @@
     <string name="series_type">bo5</string>
 
     <string name="player_name">player name</string>
-    <string name="level_status">Lvl 0</string>
+    <string name="level_status">Lvl 0: not picked</string>
     <string name="KDA">K/D/A: 0/0/0</string>
 
     <string name="score">0 - 0</string>

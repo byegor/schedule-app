@@ -80,22 +80,27 @@ public class MatchPlayerFragment extends Fragment {
         TextView playerName = (TextView) rowView.findViewById(R.id.player_name);
         playerName.setText(player.getName());
 
-        TextView level = (TextView) rowView.findViewById(R.id.level_status);
-        level.setText("Lvl " + player.getLevel() + ": " + player.getHero().getName());
+        if(player.getLevel() != 0){
+            TextView level = (TextView) rowView.findViewById(R.id.level_status);
+            level.setText("Lvl " + player.getLevel() + ": " + player.getHero().getName());
 
-        TextView kda = (TextView) rowView.findViewById(R.id.kda);
-        kda.setText("K/D/A: " + player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+            TextView kda = (TextView) rowView.findViewById(R.id.kda);
+            kda.setText("K/D/A: " + player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
 
-        List<Item> items = player.getItems();
-        for (int i = 0; i < items.size(); i++) {
-            ImageView itemImage = (ImageView) rowView.findViewById(getContext().getResources().getIdentifier("item_" + (i + 1), "id", getContext().getPackageName()));
-            Item item = items.get(i);
-            if (item.getName().contains("recipe")) {
-                Picasso.with(getContext()).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
-            } else {
-                Picasso.with(getContext()).load(ImageUtils.getItemUrl(item.getName())).resize(30, 30).centerCrop().into(itemImage);
+            List<Item> items = player.getItems();
+            for (int i = 0; i < items.size(); i++) {
+                ImageView itemImage = (ImageView) rowView.findViewById(getContext().getResources().getIdentifier("item_" + (i + 1), "id", getContext().getPackageName()));
+                Item item = items.get(i);
+                if (item.getName().contains("recipe")) {
+                    Picasso.with(getContext()).load(R.drawable.i_recipe).resize(30, 30).centerCrop().into(itemImage);
+                } else {
+                    Picasso.with(getContext()).load(ImageUtils.getItemUrl(item.getName())).resize(30, 30).centerCrop().into(itemImage);
+                }
             }
         }
+
+
+
 
         return rowView;
     }
