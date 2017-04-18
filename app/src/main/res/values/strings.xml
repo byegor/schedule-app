@@ -9,8 +9,8 @@
     <string name="game_status_live">LIVE</string>
     <string name="game_status_finished">FINISHED</string>
 
-    <string name="radiant_name">radiant team</string>
-    <string name="dire_name">dire team</string>
+    <string name="radiant_name">Radiant Team</string>
+    <string name="dire_name">Dire Team</string>
 
     <string name="series_type">bo5</string>
 

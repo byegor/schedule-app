@@ -52,12 +52,18 @@ public class MatchInfoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (match != null) {
+            String radiantTeamName = "Radiant Team";
+            String direTeamName = "Dire Team";
             TeamBean radiantTeam = match.getRadiantTeam();
             if (radiantTeam != null) {
                 View radiantLogo = view.findViewById(R.id.radiant_logo);
                 Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(radiantTeam.getLogo())).into((ImageView) radiantLogo);
-                TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
-                radiantName.setText(radiantTeam.getName());
+
+                if (radiantTeam.getName() != null && !radiantTeam.getName().isEmpty()) {
+                    radiantTeamName = radiantTeam.getName();
+                    TextView radiantName = (TextView) view.findViewById(R.id.radiant_team_name);
+                    radiantName.setText(radiantTeamName);
+                }
 
                 TextView score = (TextView) view.findViewById(R.id.match_score);
                 score.setText(match.getMatchScore());
@@ -67,8 +73,11 @@ public class MatchInfoFragment extends Fragment {
             if (direTeam != null) {
                 View direLogo = view.findViewById(R.id.dire_logo);
                 Picasso.with(getParentFragment().getActivity()).load(ImageUtils.getTeamUrl(direTeam.getLogo())).into((ImageView) direLogo);
-                TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
-                direName.setText(direTeam.getName());
+                if (direTeam.getName() != null && !direTeam.getName().isEmpty()) {
+                    direTeamName = direTeam.getName();
+                    TextView direName = (TextView) view.findViewById(R.id.dire_team_name);
+                    direName.setText(direTeamName);
+                }
             }
 
             TextView duration = (TextView) view.findViewById(R.id.match_duration);
@@ -80,14 +89,14 @@ public class MatchInfoFragment extends Fragment {
             TextView winner = (TextView) view.findViewById(R.id.team_victory);
             List<Integer> networthList = match.getNetworth();
             if (match.getMatchStatus() != 0) {
-                winner.setText("Winner: " + (match.getMatchStatus() == 1 ? match.getRadiantTeam().getName() : match.getDireTeam().getName()));
+                winner.setText("Winner: " + (match.getMatchStatus() == 1 ? radiantTeamName : direTeamName));
             } else {
                 if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
                     Integer networth = networthList.get(0);
                     if (networth > 0) {
-                        winner.setText("Net Worth Advantage: " + match.getRadiantTeam().getName() + " - " + networth);
+                        winner.setText("Net Worth Advantage: " + radiantTeamName + " - " + networth);
                     } else {
-                        winner.setText("Net Worth Advantage: " + match.getDireTeam().getName() + " - " + (-networth));
+                        winner.setText("Net Worth Advantage: " + direTeamName + " - " + (-networth));
                     }
                 } else {
                     winner.setText("Pick/Ban stage");
