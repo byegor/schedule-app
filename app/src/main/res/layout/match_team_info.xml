@@ -115,6 +115,7 @@
 
     <!--Radiand And Dire Picks-->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pick_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -222,6 +223,7 @@
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ban_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

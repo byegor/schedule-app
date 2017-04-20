@@ -105,15 +105,26 @@ public class MatchInfoFragment extends Fragment {
 
 
 //picks and bans
-            initPicks(view, match.getRadianPicks(), "radiant_pick_");
-            initPicks(view, match.getRadianBans(), "radiant_ban_");
-            initPicks(view, match.getDirePicks(), "dire_pick_");
-            initPicks(view, match.getDireBans(), "dire_ban_");
+            if ((match.getRadianPicks() == null || match.getRadianPicks().isEmpty()) && (match.getDirePicks() == null || match.getDirePicks().isEmpty())) {
+                View viewById = view.findViewById(R.id.pick_panel);
+                viewById.setVisibility(View.GONE);
+            } else {
+                initPicks(view, match.getRadianPicks(), "radiant_pick_");
+                initPicks(view, match.getDirePicks(), "dire_pick_");
+            }
+
+            if ((match.getRadianBans() == null || match.getRadianBans().isEmpty()) && (match.getDireBans() == null || match.getDireBans().isEmpty())) {
+                View viewById = view.findViewById(R.id.ban_panel);
+                viewById.setVisibility(View.GONE);
+            } else {
+                initPicks(view, match.getRadianBans(), "radiant_ban_");
+                initPicks(view, match.getDireBans(), "dire_ban_");
+            }
         }
     }
 
     private void initPicks(View view, List<HeroBean> heroes, String prefix) {
-        if (heroes != null) {
+        if (heroes != null && !heroes.isEmpty()) {
             for (int i = 0; i < heroes.size(); i++) {
                 ImageView pick = (ImageView) view.findViewById(getResources().getIdentifier(prefix + (i + 1), "id", getParentFragment().getActivity().getPackageName()));
                 HeroBean hero = heroes.get(i);

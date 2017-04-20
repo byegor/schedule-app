@@ -34,7 +34,7 @@ public class MatchWrapperFragment extends Fragment {
 
     private int gameId;
     private int gameNumber;
-    private int matchId = -1;
+    private long matchId = -1;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class MatchWrapperFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Call<Match> games = ServiceGenerator.getGameService().getMatchById(matchId);
+                Call<Match> games = ServiceGenerator.getGameService().getMatchById(getMatchId());
                 games.enqueue(getCallBack());
             }
         });
@@ -54,6 +54,10 @@ public class MatchWrapperFragment extends Fragment {
         transaction.add(R.id.team_info, infoFragment, "team_info_frag");
         transaction.commit();
         new MatchTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, gameId, gameNumber);
+    }
+
+    private long getMatchId() {
+        return matchId;
     }
 
     public static MatchWrapperFragment newInstance(int gameId, int gameNumber) {
@@ -87,6 +91,7 @@ public class MatchWrapperFragment extends Fragment {
     }
 
     public void refresh(Match match) {
+        matchId = match.getMatchId();
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         infoFragment = MatchInfoFragment.newInstance(match);
