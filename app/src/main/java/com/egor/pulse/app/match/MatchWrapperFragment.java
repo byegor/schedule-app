@@ -29,6 +29,7 @@ public class MatchWrapperFragment extends Fragment {
 
     public SwipeRefreshLayout swipeContainer;
     private MatchInfoFragment infoFragment;
+    private MatchNetWorthFragment netWorthFragment;
     private MatchPlayerFragment radiantFragment;
     private MatchPlayerFragment direFragment;
 
@@ -97,6 +98,10 @@ public class MatchWrapperFragment extends Fragment {
         infoFragment = MatchInfoFragment.newInstance(match);
         radiantFragment = MatchPlayerFragment.newInstance(match.getRadiantTeam(), true);
         direFragment = MatchPlayerFragment.newInstance(match.getDireTeam(), false);
+        if (match.getNetworth() != null && match.getNetworth().size() > 1) {
+            netWorthFragment = MatchNetWorthFragment.newInstance(match.getNetworth(), match.getDuration());
+            transaction.replace(R.id.networth_graph, netWorthFragment, "net_worth_frag");
+        }
         transaction.replace(R.id.team_info, infoFragment, "team_info_frag");
         transaction.replace(R.id.radiant_info_frag, radiantFragment, "radiant_info_frag");
         transaction.replace(R.id.dire_info_frag, direFragment, "dire_info_frag");

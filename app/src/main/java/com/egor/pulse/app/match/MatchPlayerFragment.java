@@ -98,10 +98,6 @@ public class MatchPlayerFragment extends Fragment {
                 }
             }
         }
-
-
-
-
         return rowView;
     }
 

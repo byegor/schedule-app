@@ -75,6 +75,7 @@ public class MainActivity extends Activity {
     }
 
     private Callback<Map<String, List<GameBean>>> getCallBack() {
+        final Activity activity = this;
         return new Callback<Map<String, List<GameBean>>>() {
             @Override
             public void onResponse(Call<Map<String, List<GameBean>>> call, Response<Map<String, List<GameBean>>> response) {
@@ -94,7 +95,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(Call<Map<String, List<GameBean>>> call, Throwable t) {
-                Toast.makeText(null, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Sorry! Something wrong with API", Toast.LENGTH_LONG).show();
                 Log.e("API", "couldn't get games", t);
             }
         };

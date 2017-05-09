@@ -87,10 +87,10 @@ public class MatchInfoFragment extends Fragment {
 
 
             TextView winner = (TextView) view.findViewById(R.id.team_victory);
-            List<Integer> networthList = match.getNetworth();
+//            List<Integer> networthList = match.getNetworth();
             if (match.getMatchStatus() != 0) {
                 winner.setText("Winner: " + (match.getMatchStatus() == 1 ? radiantTeamName : direTeamName));
-            } else {
+            } /*else {
                 if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
                     Integer networth = networthList.get(0);
                     if (networth > 0) {
@@ -101,7 +101,7 @@ public class MatchInfoFragment extends Fragment {
                 } else {
                     winner.setText("Pick/Ban stage");
                 }
-            }
+            }*/
 
 
 //picks and bans
