@@ -15,13 +15,13 @@ import retrofit2.http.Path;
  */
 public interface GameService {
 
-    @GET("/games/current")
+    @GET("/v1/games/")
 //    @GET("/debug/games/1")
     Call<Map<String, List<GameBean>>> currentGames();
 
-    @GET("/games/game/{gameId}")
+    @GET("/v1/games/{gameId}")
     Call<List<String>> getMatchesByGameId(@Path("gameId")int gameId);
 
-    @GET("/games/match/{matchId}")
+    @GET("/v1/matches/{matchId}")
     Call<Match> getMatchById(@Path("matchId")long matchId);
 }

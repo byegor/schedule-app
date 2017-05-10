@@ -64,6 +64,9 @@ public class MatchNetWorthFragment extends Fragment {
         }
         graph.getViewport().setScalable(false);
         graph.getViewport().setScrollable(false);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(xAxis);
+        graph.getViewport().setXAxisBoundsManual(true);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(data.toArray(new DataPoint[data.size()]));
         series.setColor(Color.YELLOW);

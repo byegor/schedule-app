@@ -87,21 +87,14 @@ public class MatchInfoFragment extends Fragment {
 
 
             TextView winner = (TextView) view.findViewById(R.id.team_victory);
-//            List<Integer> networthList = match.getNetworth();
+            List<Integer> networthList = match.getNetworth();
             if (match.getMatchStatus() != 0) {
                 winner.setText("Winner: " + (match.getMatchStatus() == 1 ? radiantTeamName : direTeamName));
-            } /*else {
-                if (networthList != null && !networthList.isEmpty() && !match.getDuration().equals("0:00")) {
-                    Integer networth = networthList.get(0);
-                    if (networth > 0) {
-                        winner.setText("Net Worth Advantage: " + radiantTeamName + " - " + networth);
-                    } else {
-                        winner.setText("Net Worth Advantage: " + direTeamName + " - " + (-networth));
-                    }
-                } else {
-                    winner.setText("Pick/Ban stage");
-                }
-            }*/
+            } else if ((networthList == null || networthList.isEmpty() && match.getDuration().equals("0:00"))) {
+                winner.setText("Pick/Ban stage");
+            } else {
+                winner.setVisibility(View.GONE);
+            }
 
 
 //picks and bans
@@ -121,6 +114,7 @@ public class MatchInfoFragment extends Fragment {
                 initPicks(view, match.getDireBans(), "dire_ban_");
             }
         }
+
     }
 
     private void initPicks(View view, List<HeroBean> heroes, String prefix) {
