@@ -22,13 +22,12 @@ import java.util.List;
  */
 public class MatchNetWorthFragment extends Fragment {
 
-    private List<Integer> networth;
-    private String duration;
-
     public static MatchNetWorthFragment newInstance(List<Integer> networth, String duration) {
         MatchNetWorthFragment fragment = new MatchNetWorthFragment();
-        fragment.networth = networth;
-        fragment.duration = duration;
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("net", new ArrayList<Integer>(networth));
+        bundle.putString("duration", duration);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -53,7 +52,9 @@ public class MatchNetWorthFragment extends Fragment {
                 }
             }
         });
-        String[] split = duration.split(":");
+        ArrayList<Integer> networth = (ArrayList<Integer>) this.getArguments().getSerializable("net");
+
+        String[] split = this.getArguments().getString("duration").split(":");
         int seconds = Integer.parseInt(split[0]) * 60 + Integer.parseInt(split[1]);
         int timeStep = seconds / networth.size();
         List<DataPoint> data = new ArrayList<DataPoint>(networth.size());
@@ -73,11 +74,4 @@ public class MatchNetWorthFragment extends Fragment {
         graph.addSeries(series);
 
     }
-
-    public String getDuration(int duration) {
-        int minutes = duration / 60;
-        int seconds = duration - minutes * 60;
-        return minutes + ":" + String.format("%02d", seconds);
-    }
-
 }

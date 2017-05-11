@@ -33,8 +33,6 @@ public class MatchWrapperFragment extends Fragment {
     private MatchPlayerFragment radiantFragment;
     private MatchPlayerFragment direFragment;
 
-    private int gameId;
-    private int gameNumber;
     private long matchId = -1;
 
     @Override
@@ -54,7 +52,7 @@ public class MatchWrapperFragment extends Fragment {
         infoFragment = MatchInfoFragment.newInstance(null);
         transaction.add(R.id.team_info, infoFragment, "team_info_frag");
         transaction.commit();
-        new MatchTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, gameId, gameNumber);
+        new MatchTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.getArguments().getInt("gameId"), this.getArguments().getInt("gameNumber"));
     }
 
     private long getMatchId() {
@@ -64,8 +62,8 @@ public class MatchWrapperFragment extends Fragment {
     public static MatchWrapperFragment newInstance(int gameId, int gameNumber) {
         MatchWrapperFragment fragment = new MatchWrapperFragment();
         Bundle args = new Bundle();
-        fragment.gameId = gameId;
-        fragment.gameNumber = gameNumber;
+        args.putInt("gameId", gameId);
+        args.putInt("gameNumber", gameNumber);
         fragment.setArguments(args);
         return fragment;
     }

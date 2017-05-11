@@ -18,16 +18,16 @@ public class MatchDataStorage {
         storedData.put(id, data);
     }
 
-    public static Match getData(int gameId, int gameNumber){
+    public static Match getData(int gameId, int gameNumber) {
         List<Match> data = storedData.get(gameId);
-        if(data != null && !data.isEmpty()){
+        if (data != null && !data.isEmpty() && gameNumber < data.size()) {
             return data.get(gameNumber);
-        }else{
+        } else {
             return null;
         }
     }
 
-    public static void removeData(int gameId){
+    public static void removeData(int gameId) {
         storedData.remove(gameId);
     }
 }
