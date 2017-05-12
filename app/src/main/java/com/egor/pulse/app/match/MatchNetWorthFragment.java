@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.egor.pulse.app.R;
-import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.egor.pulse.app.data.NetWorthValueFormatter;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,38 +43,34 @@ public class MatchNetWorthFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        GraphView graph = (GraphView) view.findViewById(R.id.graph);
-        graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return "";
-//                    return getDuration((int) value);
-                } else {
-                    return super.formatLabel(value < 0 ? -value : value, isValueX);
-                }
-            }
-        });
+        LineChart graph = (LineChart) view.findViewById(R.id.chart);
+
         ArrayList<Integer> networth = (ArrayList<Integer>) this.getArguments().getSerializable("net");
 
         String[] split = this.getArguments().getString("duration").split(":");
         int seconds = Integer.parseInt(split[0]) * 60 + Integer.parseInt(split[1]);
         int timeStep = seconds / networth.size();
-        List<DataPoint> data = new ArrayList<DataPoint>(networth.size());
+        List<Entry> entries = new ArrayList<Entry>();
         double xAxis = 0;
         for (Integer nw : networth) {
-            data.add(new DataPoint(xAxis, nw));
+            entries.add(new Entry((float) xAxis, nw));
             xAxis += timeStep;
         }
-        graph.getViewport().setScalable(false);
-        graph.getViewport().setScrollable(false);
-        graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(xAxis);
-        graph.getViewport().setXAxisBoundsManual(true);
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(data.toArray(new DataPoint[data.size()]));
-        series.setColor(Color.YELLOW);
-        graph.addSeries(series);
+        LineDataSet dataSet = new LineDataSet(entries, ""); // add entries to dataset
+        dataSet.setColor(Color.YELLOW);
+        dataSet.setDrawCircles(false);
+        dataSet.setDrawValues(false);
+        LineData lineData = new LineData(dataSet);
+        graph.setData(lineData);
+        graph.getAxisLeft().setEnabled(false);
+        graph.getAxisRight().setValueFormatter(new NetWorthValueFormatter());
+        graph.getAxisRight().setTextColor(Color.WHITE);
 
+        graph.setTouchEnabled(false);
+        graph.getLegend().setEnabled(false);
+        graph.setDescription(null);
+
+        graph.invalidate();
     }
 }
