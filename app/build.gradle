@@ -34,8 +34,8 @@ android {
         applicationId 'com.egor.pulse.app'
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 8
-        versionName "2.6"
+        versionCode 9
+        versionName "2.7"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
